@@ -7,6 +7,9 @@ public class FrameworkDelegate: UIResponder, UIApplicationDelegate {
                             didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         UINavigationBar.appearance().backgroundColor = .white
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        UINavigationBar.appearance().prefersLargeTitles = true
+        
         return true
     }
 }

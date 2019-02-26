@@ -15,8 +15,10 @@ class API: APIType {
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             guard let data = data,
                 let response = try? JSONDecoder().decode(APIResponse<APICollection<MarvelHero>>.self,
-                                                         from: data)  else { return completion(.failure) }
-            completion(.success(response.data.results))
+                                                         from: data)  else { return callOnMain(completion,
+                                                                                               with: .failure) }
+            callOnMain(completion,
+                       with:.success(response.data.results))
             }.resume()
     }
 
@@ -44,5 +46,12 @@ extension Date {
 
     var string: String {
         return Date.formatter.string(from: self)
+    }
+}
+
+private func callOnMain<T>(_ completion: @escaping (Result<T>) -> (),
+                           with result: Result<T>) {
+    DispatchQueue.main.async {
+        completion(result)
     }
 }

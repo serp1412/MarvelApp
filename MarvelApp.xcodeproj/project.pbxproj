@@ -29,7 +29,10 @@
 		9DDCBEDC2225D6EF00DD1C09 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBED92225D6EE00DD1C09 /* BundleExtensions.swift */; };
 		9DDCBEDD2225D6EF00DD1C09 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */; };
 		9DDCBEDF2225D72400DD1C09 /* HeroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDCBEDE2225D72400DD1C09 /* HeroCell.xib */; };
-		A7613898738C7804366E66D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBE912225B3ED00DD1C09 /* ViewController.swift */; };
+		9DDCBEE12225F33800DD1C09 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEE02225F33800DD1C09 /* UIImageViewExtensions.swift */; };
+		9DDCBEE22225F37E00DD1C09 /* MarvelAppFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19777775CFDEBED0B4652410 /* MarvelAppFramework.framework */; };
+		9DDCBEE32225F37E00DD1C09 /* MarvelAppFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19777775CFDEBED0B4652410 /* MarvelAppFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A7613898738C7804366E66D4 /* HeroListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBE912225B3ED00DD1C09 /* HeroListViewController.swift */; };
 		CB9A40C89538110241BFA169 /* FrameworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F245AA7315CF053561BE266 /* FrameworkDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9DDCBEE42225F37F00DD1C09 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9DDCBEE32225F37E00DD1C09 /* MarvelAppFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		19777775CFDEBED0B4652410 /* MarvelAppFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarvelAppFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0017EAECC0E0F582B92D99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -64,7 +81,7 @@
 		8F7FD48BFD9E5DDCD6435245 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = MarvelAppFramework/Info.plist; sourceTree = "<group>"; };
 		9DDCBE8C2225B3ED00DD1C09 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DDCBE8F2225B3ED00DD1C09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9DDCBE912225B3ED00DD1C09 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DDCBE912225B3ED00DD1C09 /* HeroListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewController.swift; sourceTree = "<group>"; };
 		9DDCBE942225B3ED00DD1C09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DDCBE962225B3EE00DD1C09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DDCBE992225B3EE00DD1C09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,6 +107,7 @@
 		9DDCBED92225D6EE00DD1C09 /* BundleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
 		9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		9DDCBEDE2225D72400DD1C09 /* HeroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroCell.xib; sourceTree = "<group>"; };
+		9DDCBEE02225F33800DD1C09 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DDCBEE22225F37E00DD1C09 /* MarvelAppFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +165,7 @@
 			children = (
 				8F7FD48BFD9E5DDCD6435245 /* Info.plist */,
 				7F245AA7315CF053561BE266 /* FrameworkDelegate.swift */,
-				9DDCBE912225B3ED00DD1C09 /* ViewController.swift */,
+				9DDCBE912225B3ED00DD1C09 /* HeroListViewController.swift */,
 				9DDCBED62225D66E00DD1C09 /* HeroCell.swift */,
 				9DDCBEDE2225D72400DD1C09 /* HeroCell.xib */,
 				9DDCBEC12225C80800DD1C09 /* AppEnvironment.swift */,
@@ -255,6 +274,7 @@
 				9DDCBED82225D6EE00DD1C09 /* Nibloadable.swift */,
 				9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */,
 				9DDCBED42225CB9A00DD1C09 /* MD5.swift */,
+				9DDCBEE02225F33800DD1C09 /* UIImageViewExtensions.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -279,6 +299,7 @@
 				9DDCBE882225B3ED00DD1C09 /* Sources */,
 				9DDCBE892225B3ED00DD1C09 /* Frameworks */,
 				9DDCBE8A2225B3ED00DD1C09 /* Resources */,
+				9DDCBEE42225F37F00DD1C09 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -453,8 +474,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7613898738C7804366E66D4 /* ViewController.swift in Sources */,
+				A7613898738C7804366E66D4 /* HeroListViewController.swift in Sources */,
 				9DDCBEDC2225D6EF00DD1C09 /* BundleExtensions.swift in Sources */,
+				9DDCBEE12225F33800DD1C09 /* UIImageViewExtensions.swift in Sources */,
 				9DDCBEC42225C80D00DD1C09 /* Environment.swift in Sources */,
 				9DDCBEDB2225D6EF00DD1C09 /* Nibloadable.swift in Sources */,
 				CB9A40C89538110241BFA169 /* FrameworkDelegate.swift in Sources */,
@@ -519,6 +541,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7C2WZ3W3L2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -530,6 +553,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.testcompany.MarvelAppFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -660,6 +684,7 @@
 		9DDCBEB52225B3EF00DD1C09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7C2WZ3W3L2;
@@ -679,6 +704,7 @@
 		9DDCBEB62225B3EF00DD1C09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7C2WZ3W3L2;
@@ -783,6 +809,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7C2WZ3W3L2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -794,6 +821,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.testcompany.MarvelAppFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
