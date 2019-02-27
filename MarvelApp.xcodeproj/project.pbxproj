@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		95ABF8A52AC306CA0454510E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0017EAECC0E0F582B92D99 /* Foundation.framework */; };
+		9D4462A722273BD000E25672 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4462A522273BC000E25672 /* RequestType.swift */; };
+		9D8EDC3F222731AC009912FC /* HeroListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EDC3C22273189009912FC /* HeroListRequest.swift */; };
 		9DDCBE902225B3ED00DD1C09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBE8F2225B3ED00DD1C09 /* AppDelegate.swift */; };
 		9DDCBE952225B3ED00DD1C09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DDCBE932225B3ED00DD1C09 /* Main.storyboard */; };
 		9DDCBE972225B3EE00DD1C09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DDCBE962225B3EE00DD1C09 /* Assets.xcassets */; };
@@ -79,6 +81,8 @@
 		5B0017EAECC0E0F582B92D99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7F245AA7315CF053561BE266 /* FrameworkDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameworkDelegate.swift; path = MarvelAppFramework/FrameworkDelegate.swift; sourceTree = "<group>"; };
 		8F7FD48BFD9E5DDCD6435245 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = MarvelAppFramework/Info.plist; sourceTree = "<group>"; };
+		9D4462A522273BC000E25672 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		9D8EDC3C22273189009912FC /* HeroListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListRequest.swift; sourceTree = "<group>"; };
 		9DDCBE8C2225B3ED00DD1C09 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DDCBE8F2225B3ED00DD1C09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DDCBE912225B3ED00DD1C09 /* HeroListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				9DDCBEC52225C9BF00DD1C09 /* API.swift */,
+				9D8EDC3C22273189009912FC /* HeroListRequest.swift */,
+				9D4462A522273BC000E25672 /* RequestType.swift */,
 				9DDCBED12225CB4F00DD1C09 /* Result.swift */,
 				9DDCBEC82225CA8800DD1C09 /* Models */,
 			);
@@ -482,6 +488,7 @@
 				CB9A40C89538110241BFA169 /* FrameworkDelegate.swift in Sources */,
 				9DDCBED72225D66E00DD1C09 /* HeroCell.swift in Sources */,
 				9DDCBEC22225C80800DD1C09 /* AppEnvironment.swift in Sources */,
+				9D8EDC3F222731AC009912FC /* HeroListRequest.swift in Sources */,
 				9DDCBEDD2225D6EF00DD1C09 /* StoryboardInstantiable.swift in Sources */,
 				9DDCBECC2225CABD00DD1C09 /* APICollection.swift in Sources */,
 				9DDCBED02225CAEA00DD1C09 /* Thumbnail.swift in Sources */,
@@ -490,6 +497,7 @@
 				9DDCBECE2225CAC900DD1C09 /* MarvelHero.swift in Sources */,
 				9DDCBECA2225CAAC00DD1C09 /* APIResponse.swift in Sources */,
 				9DDCBED52225CB9A00DD1C09 /* MD5.swift in Sources */,
+				9D4462A722273BD000E25672 /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
