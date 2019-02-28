@@ -1,31 +1,31 @@
 import Foundation
 
 protocol APIType {
-    func getHeroes(name: String?, completion: @escaping (Result<[MarvelHero]>) -> ())
+    func getHeroes(name: String?, offset: Int, completion: @escaping (Result<APICollection<MarvelHero>>) -> ())
 }
 
 extension APIType {
-    func getHeroes(name: String? = nil, completion: @escaping (Result<[MarvelHero]>) -> ()) {
-        getHeroes(name: name, completion: completion)
+    func getHeroes(name: String? = nil, offset: Int = 0, completion: @escaping (Result<APICollection<MarvelHero>>) -> ()) {
+        getHeroes(name: name, offset: offset, completion: completion)
     }
 }
 
 class API: APIType {
-    func getHeroes(name: String?, completion: @escaping (Result<[MarvelHero]>) -> ()) {
-        let request: HeroListRequest = .init(options: name.flatMap(HeroListRequest.Options.name))
+    func getHeroes(name: String?, offset: Int, completion: @escaping (Result<APICollection<MarvelHero>>) -> ()) {
+        let request: HeroListRequest = .init(options: name.flatMap(HeroListRequest.Options.name), .offset(offset))
 
         perform(request: request, completion: completion)
     }
 
     private func perform<R: RequestType>(request: R,
-                                         completion: @escaping (Result<[R.ResponseType]>) -> ()) {
+                                         completion: @escaping (Result<R.ResponseType>) -> ()) {
         URLSession.shared.dataTask(with: request.url) { (data, _, _) in
             guard let data = data,
-                let response = try? JSONDecoder().decode(APIResponse<APICollection<R.ResponseType>>.self,
+                let response = try? JSONDecoder().decode(APIResponse<R.ResponseType>.self,
                                                          from: data)  else { return callOnMain(completion,
                                                                                                with: .failure) }
             callOnMain(completion,
-                       with: .success(response.data.results))
+                       with: .success(response.data))
             }.resume()
     }
 }

@@ -1,18 +1,20 @@
 import Foundation
 
 struct HeroListRequest: RequestType {
-    typealias ResponseType = MarvelHero
+    typealias ResponseType = APICollection<MarvelHero>
     let endpoint: String = "/characters?orderBy=name"
     let options: [String]
 
     enum Options {
         case name(String)
         case nameStartsWith(String)
+        case offset(Int)
 
         var string: String {
             switch self {
             case .name(let name): return "name=\(name)"
             case .nameStartsWith(let prefix): return "nameStartsWith=\(prefix)"
+            case .offset(let offset): return "offset=\(offset)"
             }
         }
     }

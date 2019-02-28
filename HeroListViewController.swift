@@ -7,6 +7,8 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
     fileprivate var heroes: [MarvelHero] = []
     var searchResults: [MarvelHero] = []
     var isInSearchMode = false
+    var paginationGenerator = PageOffsetGenerator()
+    var nextPageFetchingInProgress = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,17 +16,34 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
         setupCollectionView()
         setupNavigationItem()
         definesPresentationContext = true
-        fetchHeroes()
+        fetchFirstHeroes()
     }
 
-    private func fetchHeroes() {
+    private func fetchFirstHeroes() {
         AppEnvironment.current.api.getHeroes { [weak self] result in
             switch result {
-            case .success(let heroes):
-                self?.heroes = heroes
+            case .success(let collection):
+                self?.paginationGenerator = .init(pageSize: 20,
+                                                  maxItemsCount: collection.total)
+                self?.heroes = collection.results
                 self?.collectionView.reloadData()
             case .failure: break
             }
+        }
+    }
+
+    private func fetchNextHeroes() {
+        nextPageFetchingInProgress = true
+        AppEnvironment.current.api.getHeroes(offset: paginationGenerator.next()) { [weak self] result in
+            switch result {
+            case .success(let collection):
+                self?.heroes += collection.results
+                self?.collectionView.reloadData()
+            case .failure:
+                self?.paginationGenerator.rewind()
+            }
+
+            self?.nextPageFetchingInProgress = false
         }
     }
 
@@ -45,6 +64,14 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
         collectionView.dataSource = self
         collectionView.register(HeroCell.self)
     }
+
+    private func shouldFetchNextPage(at indexPath: IndexPath) -> Bool {
+        return indexPath.row + 1 >= heroes.count && !nextPageFetchingInProgress && !allPagesLoaded && !isInSearchMode
+    }
+
+    private var allPagesLoaded: Bool {
+        return paginationGenerator.allPagesLoaded && !nextPageFetchingInProgress
+    }
 }
 
 extension HeroListViewController: UISearchBarDelegate, UISearchControllerDelegate {
@@ -54,8 +81,8 @@ extension HeroListViewController: UISearchBarDelegate, UISearchControllerDelegat
         isInSearchMode = true
         AppEnvironment.current.api.getHeroes(name: text) { [weak self] (result) in
             switch result {
-            case .success(let heroes):
-                self?.searchResults = heroes
+            case .success(let collection):
+                self?.searchResults = collection.results
                 self?.collectionView.reloadData()
             case .failure: break
             }
@@ -75,7 +102,7 @@ extension HeroListViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize.init(width: collectionView.frame.width, height: 272)
+        return CGSize(width: collectionView.frame.width, height: 272)
     }
 }
 
@@ -95,4 +122,26 @@ extension HeroListViewController: UICollectionViewDataSource {
 
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard shouldFetchNextPage(at: indexPath) else { return }
+        fetchNextHeroes()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return !heroes.isEmpty && !isInSearchMode && !allPagesLoaded ?
+            CGSize(width: collectionView.frame.width, height: 60) :
+            .zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionFooter else {
+            return UICollectionReusableView()
+        }
+
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                               withReuseIdentifier: "HeroListFooterView",
+                                                               for: indexPath)
+    }
 }
+
