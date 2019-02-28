@@ -6,6 +6,9 @@ public class FrameworkDelegate: UIResponder, UIApplicationDelegate {
     public func application(_ application: UIApplication,
                             didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        window?.rootViewController = HeroListBuilder.build()
+        window?.makeKeyAndVisible()
+
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         UINavigationBar.appearance().prefersLargeTitles = true

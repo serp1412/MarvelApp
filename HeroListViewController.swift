@@ -2,13 +2,10 @@ import UIKit
 
 class HeroListViewController: UIViewController, StoryboardInstantiable {
     static var storyboardName: String = "Main"
+    @IBOutlet private weak var collectionView: UICollectionView!
+    private var loadingIndicator: UIActivityIndicatorView?
 
-    @IBOutlet weak var collectionView: UICollectionView!
-    fileprivate var heroes: [MarvelHero] = []
-    var searchResults: [MarvelHero] = []
-    var isInSearchMode = false
-    var paginationGenerator = PageOffsetGenerator()
-    var nextPageFetchingInProgress = false
+    var interactor: HeroListOutput!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,35 +13,7 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
         setupCollectionView()
         setupNavigationItem()
         definesPresentationContext = true
-        fetchFirstHeroes()
-    }
-
-    private func fetchFirstHeroes() {
-        AppEnvironment.current.api.getHeroes { [weak self] result in
-            switch result {
-            case .success(let collection):
-                self?.paginationGenerator = .init(pageSize: 20,
-                                                  maxItemsCount: collection.total)
-                self?.heroes = collection.results
-                self?.collectionView.reloadData()
-            case .failure: break
-            }
-        }
-    }
-
-    private func fetchNextHeroes() {
-        nextPageFetchingInProgress = true
-        AppEnvironment.current.api.getHeroes(offset: paginationGenerator.next()) { [weak self] result in
-            switch result {
-            case .success(let collection):
-                self?.heroes += collection.results
-                self?.collectionView.reloadData()
-            case .failure:
-                self?.paginationGenerator.rewind()
-            }
-
-            self?.nextPageFetchingInProgress = false
-        }
+        interactor.viewDidLoad()
     }
 
     private func setupNavigationItem() {
@@ -64,34 +33,32 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
         collectionView.dataSource = self
         collectionView.register(HeroCell.self)
     }
+}
 
-    private func shouldFetchNextPage(at indexPath: IndexPath) -> Bool {
-        return indexPath.row + 1 >= heroes.count && !nextPageFetchingInProgress && !allPagesLoaded && !isInSearchMode
+extension HeroListViewController: HeroListInput {
+    func reloadData() { collectionView.reloadData() }
+
+    func showLoading() {
+        guard loadingIndicator == nil else { return }
+        let indicator = UIActivityIndicatorView(style: .gray)
+        loadingIndicator = indicator
+        collectionView.addToCenter(indicator)
+        indicator.startAnimating()
     }
 
-    private var allPagesLoaded: Bool {
-        return paginationGenerator.allPagesLoaded && !nextPageFetchingInProgress
+    func hideLoading() {
+        loadingIndicator?.removeFromSuperview()
+        loadingIndicator = nil
     }
 }
 
 extension HeroListViewController: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text, !text.isEmpty else { return }
-
-        isInSearchMode = true
-        AppEnvironment.current.api.getHeroes(name: text) { [weak self] (result) in
-            switch result {
-            case .success(let collection):
-                self?.searchResults = collection.results
-                self?.collectionView.reloadData()
-            case .failure: break
-            }
-        }
+        interactor.searchBarDidEndEditingWithText(searchBar.text)
     }
 
     func willDismissSearchController(_ searchController: UISearchController) {
-        isInSearchMode = false
-        collectionView.reloadData()
+        interactor.willDismissSearch()
     }
 }
 
@@ -109,27 +76,24 @@ extension HeroListViewController: UICollectionViewDelegateFlowLayout {
 extension HeroListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection
         section: Int) -> Int {
-        return isInSearchMode ? searchResults.count : heroes.count
+        return interactor.numberOfHeroes
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeroCell.identifier,
                                                       for: indexPath) as! HeroCell
 
-        let array = isInSearchMode ? searchResults : heroes
-
-        cell.configure(for: array[indexPath.row])
+        cell.configure(for: interactor.heroForIndex(indexPath.row))
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard shouldFetchNextPage(at: indexPath) else { return }
-        fetchNextHeroes()
+        interactor.willDisplayCellAtIndex(indexPath.row)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return !heroes.isEmpty && !isInSearchMode && !allPagesLoaded ?
+        return interactor.shouldShowFooter ?
             CGSize(width: collectionView.frame.width, height: 60) :
             .zero
     }

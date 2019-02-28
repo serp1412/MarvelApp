@@ -10,6 +10,9 @@
 		95ABF8A52AC306CA0454510E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0017EAECC0E0F582B92D99 /* Foundation.framework */; };
 		9D4462A722273BD000E25672 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4462A522273BC000E25672 /* RequestType.swift */; };
 		9D47DE9D22287BB60089F0AE /* PageOffsetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DE9B22287BAC0089F0AE /* PageOffsetGenerator.swift */; };
+		9D47DE9F22287CCA0089F0AE /* HeroListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DE9E22287CCA0089F0AE /* HeroListInteractor.swift */; };
+		9D47DEA122287D880089F0AE /* HeroListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DEA022287D870089F0AE /* HeroListBuilder.swift */; };
+		9D47DEA32228877A0089F0AE /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DEA22228877A0089F0AE /* UIViewExtensions.swift */; };
 		9D8EDC3F222731AC009912FC /* HeroListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EDC3C22273189009912FC /* HeroListRequest.swift */; };
 		9DDCBE902225B3ED00DD1C09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBE8F2225B3ED00DD1C09 /* AppDelegate.swift */; };
 		9DDCBE952225B3ED00DD1C09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DDCBE932225B3ED00DD1C09 /* Main.storyboard */; };
@@ -84,6 +87,9 @@
 		8F7FD48BFD9E5DDCD6435245 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = MarvelAppFramework/Info.plist; sourceTree = "<group>"; };
 		9D4462A522273BC000E25672 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		9D47DE9B22287BAC0089F0AE /* PageOffsetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOffsetGenerator.swift; sourceTree = "<group>"; };
+		9D47DE9E22287CCA0089F0AE /* HeroListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListInteractor.swift; sourceTree = "<group>"; };
+		9D47DEA022287D870089F0AE /* HeroListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListBuilder.swift; sourceTree = "<group>"; };
+		9D47DEA22228877A0089F0AE /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		9D8EDC3C22273189009912FC /* HeroListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListRequest.swift; sourceTree = "<group>"; };
 		9DDCBE8C2225B3ED00DD1C09 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DDCBE8F2225B3ED00DD1C09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +178,8 @@
 				8F7FD48BFD9E5DDCD6435245 /* Info.plist */,
 				7F245AA7315CF053561BE266 /* FrameworkDelegate.swift */,
 				9DDCBE912225B3ED00DD1C09 /* HeroListViewController.swift */,
+				9D47DEA022287D870089F0AE /* HeroListBuilder.swift */,
+				9D47DE9E22287CCA0089F0AE /* HeroListInteractor.swift */,
 				9DDCBED62225D66E00DD1C09 /* HeroCell.swift */,
 				9DDCBEDE2225D72400DD1C09 /* HeroCell.xib */,
 				9DDCBEC12225C80800DD1C09 /* AppEnvironment.swift */,
@@ -281,6 +289,7 @@
 			children = (
 				9DDCBED92225D6EE00DD1C09 /* BundleExtensions.swift */,
 				9DDCBED82225D6EE00DD1C09 /* Nibloadable.swift */,
+				9D47DEA22228877A0089F0AE /* UIViewExtensions.swift */,
 				9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */,
 				9DDCBED42225CB9A00DD1C09 /* MD5.swift */,
 				9DDCBEE02225F33800DD1C09 /* UIImageViewExtensions.swift */,
@@ -483,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D47DEA32228877A0089F0AE /* UIViewExtensions.swift in Sources */,
 				A7613898738C7804366E66D4 /* HeroListViewController.swift in Sources */,
 				9DDCBEDC2225D6EF00DD1C09 /* BundleExtensions.swift in Sources */,
 				9DDCBEE12225F33800DD1C09 /* UIImageViewExtensions.swift in Sources */,
@@ -495,9 +505,11 @@
 				9DDCBEDD2225D6EF00DD1C09 /* StoryboardInstantiable.swift in Sources */,
 				9DDCBECC2225CABD00DD1C09 /* APICollection.swift in Sources */,
 				9DDCBED02225CAEA00DD1C09 /* Thumbnail.swift in Sources */,
+				9D47DE9F22287CCA0089F0AE /* HeroListInteractor.swift in Sources */,
 				9DDCBED22225CB4F00DD1C09 /* Result.swift in Sources */,
 				9D47DE9D22287BB60089F0AE /* PageOffsetGenerator.swift in Sources */,
 				9DDCBEC62225C9BF00DD1C09 /* API.swift in Sources */,
+				9D47DEA122287D880089F0AE /* HeroListBuilder.swift in Sources */,
 				9DDCBECE2225CAC900DD1C09 /* MarvelHero.swift in Sources */,
 				9DDCBECA2225CAAC00DD1C09 /* APIResponse.swift in Sources */,
 				9DDCBED52225CB9A00DD1C09 /* MD5.swift in Sources */,

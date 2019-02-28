@@ -6,9 +6,7 @@ import PlaygroundSupport
 FrameworkDelegate().application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
 
 
-let vc = HeroListViewController.instantiate()
-vc.navigationItem.searchController = UISearchController(searchResultsController: nil)
-let navVC = UINavigationController(rootViewController: vc)
+let navVC = HeroListBuilder.build()
 
 navVC.view.frame = CGRect.init(x: 0, y: 0, width: 375, height: 667)
 
