@@ -2,31 +2,16 @@ import UIKit
 
 class HeroDetailViewController: UIViewController, StoryboardInstantiable {
     static var storyboardName: String = "HeroDetail"
+    var interactor: HeroDetailOutput!
     @IBOutlet private weak var collectionView: UICollectionView!
     private var loadingIndicator: UIActivityIndicatorView?
-
-    private var hero: MarvelHero!
-    private let dispatchGroup = DispatchGroup()
-    private var sections: [Section] = []
-
-    struct Section {
-        let title: String
-        let products: [HeroProduct]
-    }
-
-    static func instantiate(with hero: MarvelHero) -> HeroDetailViewController {
-        let vc = instantiate()
-        vc.hero = hero
-
-        return vc
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.largeTitleDisplayMode = .never
         setupCollectionView()
-        fetchData()
+        interactor.viewDidLoad()
     }
 
     private func setupCollectionView() {
@@ -39,35 +24,13 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
         layout.minimumInteritemSpacing = 10
         collectionView.collectionViewLayout = layout
     }
+}
 
-    private func fetchData() {
-        func addSection(kind: HeroProductsRequest.Kind, products: [HeroProduct]) {
-            if products.isEmpty { return }
-            let section = Section(title: kind.sectionTitle, products: products)
-            self.sections.append(section)
-        }
-
-        showLoading()
-
-        fetchData(ofKind: .comics, withUpdate: addSection(kind:products:))
-        fetchData(ofKind: .series, withUpdate: addSection(kind:products:))
-        fetchData(ofKind: .stories, withUpdate: addSection(kind:products:))
-        fetchData(ofKind: .events, withUpdate: addSection(kind:products:))
-
-        dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
-            self?.collectionView.reloadData()
-            self?.hideLoading()
-        }
+extension HeroDetailViewController: HeroDetailInput {
+    func reloadData() {
+        collectionView.reloadData()
     }
-
-    private func fetchData(ofKind kind: HeroProductsRequest.Kind, withUpdate f: @escaping (HeroProductsRequest.Kind, [HeroProduct]) -> Void) {
-        dispatchGroup.enter()
-        AppEnvironment.current.api.getHeroProducts(kind: kind, heroId: hero.id, limit: 3) { [weak self] result in
-            f(kind, result.value?.results ?? [])
-            self?.dispatchGroup.leave()
-        }
-    }
-
+    
     func showLoading() {
         guard loadingIndicator == nil else { return }
         let indicator = UIActivityIndicatorView(style: .gray)
@@ -84,33 +47,31 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
 
 extension HeroDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count + 1
+        return interactor.numberOfSections
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection
         section: Int) -> Int {
-        return section == 0 ? 1 : sections[section - 1].products.count
+        return interactor.numberOfItemsInSection(section)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return indexPath.section == 0 ?
-            posterCell(collectionView, cellForItemAt: indexPath) :
-            cardCell(collectionView, cellForItemAt: indexPath)
+        switch interactor.cellTypeForSection(indexPath.section) {
+        case .poster: return posterCell(collectionView, cellForItemAt: indexPath)
+        case .card: return cardCell(collectionView, cellForItemAt: indexPath)
+        }
     }
 
     private func posterCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> PosterCell {
         let cell = collectionView.dequeue(PosterCell.self, for: indexPath)
-
-        cell.configure(with: hero)
+        cell.configure(with: interactor.hero)
 
         return cell
     }
 
     private func cardCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> CardCell {
         let cell = collectionView.dequeue(CardCell.self, for: indexPath)
-
-        let product = sections[indexPath.section - 1].products[indexPath.row]
-        cell.configure(for: product)
+        cell.configure(for: interactor.product(at: indexPath))
 
         return cell
     }
@@ -138,19 +99,8 @@ extension HeroDetailViewController: UICollectionViewDelegateFlowLayout {
                                                              for: indexPath,
                                                              kind: UICollectionView.elementKindSectionHeader)
 
-        header.titleLabel.text = sections[indexPath.section - 1].title
+        header.titleLabel.text = interactor.titleForSection(indexPath.section)
 
         return header
-    }
-}
-
-extension HeroProductsRequest.Kind {
-    fileprivate var sectionTitle: String {
-        switch self {
-        case .comics: return "Comics"
-        case .series: return "Series"
-        case .stories: return "Stories"
-        case .events: return "Events"
-        }
     }
 }

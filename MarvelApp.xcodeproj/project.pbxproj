@@ -11,6 +11,7 @@
 		9D325FCF222B06E200DC3270 /* HeroDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FCE222B06E200DC3270 /* HeroDetailInteractor.swift */; };
 		9D325FD1222B06E900DC3270 /* HeroDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FD0222B06E900DC3270 /* HeroDetailBuilder.swift */; };
 		9D325FD8222B0AB100DC3270 /* Dequeuer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FD7222B0AB100DC3270 /* Dequeuer.swift */; };
+		9D325FDA222B0F0000DC3270 /* HeroDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FD9222B0F0000DC3270 /* HeroDetailInteractorTests.swift */; };
 		9D4462A722273BD000E25672 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4462A522273BC000E25672 /* RequestType.swift */; };
 		9D47DE9D22287BB60089F0AE /* PageOffsetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DE9B22287BAC0089F0AE /* PageOffsetGenerator.swift */; };
 		9D47DE9F22287CCA0089F0AE /* HeroListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DE9E22287CCA0089F0AE /* HeroListInteractor.swift */; };
@@ -106,6 +107,7 @@
 		9D325FCE222B06E200DC3270 /* HeroDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailInteractor.swift; sourceTree = "<group>"; };
 		9D325FD0222B06E900DC3270 /* HeroDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailBuilder.swift; sourceTree = "<group>"; };
 		9D325FD7222B0AB100DC3270 /* Dequeuer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dequeuer.swift; sourceTree = "<group>"; };
+		9D325FD9222B0F0000DC3270 /* HeroDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailInteractorTests.swift; sourceTree = "<group>"; };
 		9D4462A522273BC000E25672 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		9D47DE9B22287BAC0089F0AE /* PageOffsetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOffsetGenerator.swift; sourceTree = "<group>"; };
 		9D47DE9E22287CCA0089F0AE /* HeroListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListInteractor.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			children = (
 				9D47DEAC22288C1E0089F0AE /* Info.plist */,
 				9D47DEAA22288C1E0089F0AE /* HeroListInteractorTests.swift */,
+				9D325FD9222B0F0000DC3270 /* HeroDetailInteractorTests.swift */,
 				9D325FD5222B074800DC3270 /* Mocks */,
 				9D325FD6222B075000DC3270 /* Helpers */,
 			);
@@ -594,6 +597,7 @@
 				9D47DEBC2228908B0089F0AE /* MockThumbnail.swift in Sources */,
 				9D47DEBA22288F780089F0AE /* MockMarvelHero.swift in Sources */,
 				9D47DEB622288D320089F0AE /* MockHeroListOutput.swift in Sources */,
+				9D325FDA222B0F0000DC3270 /* HeroDetailInteractorTests.swift in Sources */,
 				9D47DEAB22288C1E0089F0AE /* HeroListInteractorTests.swift in Sources */,
 				9D47DEC0222967250089F0AE /* ClosureStub.swift in Sources */,
 			);

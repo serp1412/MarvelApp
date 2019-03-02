@@ -65,7 +65,7 @@ extension HeroListViewController: UISearchBarDelegate, UISearchControllerDelegat
 extension HeroListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let hero = interactor.heroForIndex(indexPath.row)
-        let heroDetail = HeroDetailViewController.instantiate(with: hero)
+        let heroDetail = HeroDetailBuilder.build(with: hero)
 
         navigationController?.pushViewController(heroDetail, animated: true)
     }

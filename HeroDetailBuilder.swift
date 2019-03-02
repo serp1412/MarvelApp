@@ -1,9 +1,11 @@
-//
-//  HeroDetailBuilder.swift
-//  MarvelAppFramework
-//
-//  Created by Serghei Catraniuc on 3/2/19.
-//  Copyright © 2019 TestCompany. All rights reserved.
-//
+enum HeroDetailBuilder {
+    static func build(with hero: MarvelHero) -> HeroDetailViewController {
+        let view = HeroDetailViewController.instantiate()
+        let interactor = HeroDetailInteractor(hero: hero)
 
-import Foundation
+        view.interactor = interactor
+        interactor.view = view
+
+        return view
+    }
+}

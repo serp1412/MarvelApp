@@ -1,6 +1,6 @@
 import UIKit
 
-class HeroListBuilder {
+enum HeroListBuilder {
     static func build() -> UINavigationController {
         let view = HeroListViewController.instantiate()
         let interactor = HeroListInteractor()
