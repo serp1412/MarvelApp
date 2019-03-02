@@ -31,7 +31,7 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(HeroCell.self)
+        collectionView.register(CardCell.self)
     }
 }
 
@@ -64,7 +64,10 @@ extension HeroListViewController: UISearchBarDelegate, UISearchControllerDelegat
 
 extension HeroListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-// TODO
+        let hero = interactor.heroForIndex(indexPath.row)
+        let heroDetail = HeroDetailViewController.instantiate(with: hero)
+
+        navigationController?.pushViewController(heroDetail, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -80,8 +83,8 @@ extension HeroListViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeroCell.identifier,
-                                                      for: indexPath) as! HeroCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.identifier,
+                                                      for: indexPath) as! CardCell
 
         cell.configure(for: interactor.heroForIndex(indexPath.row))
 

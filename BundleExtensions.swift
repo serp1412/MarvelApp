@@ -5,6 +5,6 @@ extension Bundle {
     /// parameter as long as it is in the framework target.
     @objc(frameworkBundle)
     public static var framework: Bundle {
-        return Bundle(for: HeroCell.self)
+        return Bundle(for: CardCell.self)
     }
 }

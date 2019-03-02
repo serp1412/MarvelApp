@@ -10,7 +10,6 @@ public class FrameworkDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         UINavigationBar.appearance().backgroundColor = .white
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         UINavigationBar.appearance().prefersLargeTitles = true
         
         return true

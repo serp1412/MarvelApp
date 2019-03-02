@@ -1,6 +1,6 @@
 import UIKit
 
-class HeroCell: UICollectionViewCell {
+class CardCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
@@ -20,6 +20,13 @@ class HeroCell: UICollectionViewCell {
         imageView.loadImage(at: hero.thumbnail.url(for: .portrait))
     }
 
+    func configure(for product: HeroProduct) {
+        titleLabel.text = product.title
+        descriptionLabel.text = product.description
+        guard let thumbnail = product.thumbnail else { return }
+        imageView.loadImage(at: thumbnail.url(for: .portrait))
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -27,4 +34,4 @@ class HeroCell: UICollectionViewCell {
     }
 }
 
-extension HeroCell: NibLoadable {}
+extension CardCell: NibLoadable {}

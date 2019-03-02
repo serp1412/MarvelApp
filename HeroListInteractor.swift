@@ -50,12 +50,9 @@ class HeroListInteractor: HeroListOutput {
 
         isInSearchMode = true
         AppEnvironment.current.api.getHeroes(name: text) { [weak self] (result) in
-            switch result {
-            case .success(let collection):
-                self?.searchResults = collection.results
-                self?.view.reloadData()
-            case .failure: break
-            }
+            guard let results = result.value?.results else { return }
+            self?.searchResults = results
+            self?.view.reloadData()
         }
     }
 
@@ -63,15 +60,13 @@ class HeroListInteractor: HeroListOutput {
         view.showLoading()
         AppEnvironment.current.api.getHeroes { [weak self] result in
             self?.view.hideLoading()
-            switch result {
-            case .success(let collection):
-                self?.paginationGenerator = .init(pageSize: collection.limit,
-                                                  maxItemsCount: collection.total,
-                                                  currentOffset: collection.limit)
-                self?.heroes = collection.results
-                self?.view.reloadData()
-            case .failure: break
-            }
+            guard let collection = result.value else { return }
+
+            self?.paginationGenerator = .init(pageSize: collection.limit,
+                                              maxItemsCount: collection.total,
+                                              currentOffset: collection.limit)
+            self?.heroes = collection.results
+            self?.view.reloadData()
         }
     }
 
