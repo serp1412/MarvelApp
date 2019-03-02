@@ -1,7 +1,7 @@
 import UIKit
 
 class HeroListViewController: UIViewController, StoryboardInstantiable {
-    static var storyboardName: String = "Main"
+    static var storyboardName: String = "HeroList"
     @IBOutlet private weak var collectionView: UICollectionView!
     private var loadingIndicator: UIActivityIndicatorView?
 

@@ -6,6 +6,7 @@ public class FrameworkDelegate: UIResponder, UIApplicationDelegate {
     public func application(_ application: UIApplication,
                             didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        window = UIWindow()
         window?.rootViewController = HeroListBuilder.build()
         window?.makeKeyAndVisible()
 
