@@ -18,29 +18,26 @@ class API: APIType {
     }
 
     func getComics(heroId: Int, limit: Int = 0, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
-        let request: ComicsRequest = .init(options: .heroId(heroId), limit > 0 ? .limit(limit) : nil)
-
-        perform(request: request, completion: completion)
+        getHeroProducts(kind: .comics, heroId: heroId, completion: completion)
     }
 
     func getEvents(heroId: Int, limit: Int = 0, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
-        let request: EventsRequest = .init(options: .heroId(heroId), limit > 0 ? .limit(limit) : nil)
-
-        perform(request: request, completion: completion)
+        getHeroProducts(kind: .events, heroId: heroId, completion: completion)
     }
 
     func getStories(heroId: Int, limit: Int = 0, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
-        let request: StoriesRequest = .init(options: .heroId(heroId), limit > 0 ? .limit(limit) : nil)
-
-        perform(request: request, completion: completion)
+        getHeroProducts(kind: .stories, heroId: heroId, completion: completion)
     }
 
     func getSeries(heroId: Int, limit: Int = 0, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
-        let request: SeriesRequest = .init(options: .heroId(heroId), limit > 0 ? .limit(limit) : nil)
+        getHeroProducts(kind: .series, heroId: heroId, completion: completion)
+    }
+
+    private func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: Int, limit: Int = 0, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
+        let request: HeroProductsRequest = .init(kind: kind, options: .heroId(heroId), limit > 0 ? .limit(limit) : nil)
 
         perform(request: request, completion: completion)
     }
-
 
     private func perform<R: RequestType>(request: R,
                                          completion: @escaping (Result<R.ResponseType>) -> ()) {
