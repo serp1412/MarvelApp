@@ -5,8 +5,9 @@ extension MarvelHero: MockableModel {
         return mocked(name: "Hulk")
     }
 
-    static func mocked(name: String = "Hulk", description: String = "He smashes", thumbnail: Thumbnail = .mocked()) -> MarvelHero {
-        return .init(name: name,
+    static func mocked(id: Int = 1234, name: String = "Hulk", description: String = "He smashes", thumbnail: Thumbnail = .mocked()) -> MarvelHero {
+        return .init(id: id,
+                     name: name,
                      description: description,
                      thumbnail: thumbnail)
     }
