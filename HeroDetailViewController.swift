@@ -3,6 +3,7 @@ import UIKit
 class HeroDetailViewController: UIViewController, StoryboardInstantiable {
     static var storyboardName: String = "HeroDetail"
     @IBOutlet private weak var collectionView: UICollectionView!
+    private var loadingIndicator: UIActivityIndicatorView?
 
     private var hero: MarvelHero!
     private let dispatchGroup = DispatchGroup()
@@ -46,6 +47,8 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
             self.sections.append(section)
         }
 
+        showLoading()
+
         fetchData(ofKind: .comics, withUpdate: addSection(kind:products:))
         fetchData(ofKind: .series, withUpdate: addSection(kind:products:))
         fetchData(ofKind: .stories, withUpdate: addSection(kind:products:))
@@ -53,6 +56,7 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
 
         dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
             self?.collectionView.reloadData()
+            self?.hideLoading()
         }
     }
 
@@ -62,6 +66,19 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
             f(kind, result.value?.results ?? [])
             self?.dispatchGroup.leave()
         }
+    }
+
+    func showLoading() {
+        guard loadingIndicator == nil else { return }
+        let indicator = UIActivityIndicatorView(style: .gray)
+        loadingIndicator = indicator
+        collectionView.addToCenter(indicator)
+        indicator.startAnimating()
+    }
+
+    func hideLoading() {
+        loadingIndicator?.removeFromSuperview()
+        loadingIndicator = nil
     }
 }
 
@@ -82,8 +99,7 @@ extension HeroDetailViewController: UICollectionViewDataSource {
     }
 
     private func posterCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> PosterCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCell.identifier,
-                                                      for: indexPath) as! PosterCell
+        let cell = collectionView.dequeue(PosterCell.self, for: indexPath)
 
         cell.configure(with: hero)
 
@@ -91,8 +107,7 @@ extension HeroDetailViewController: UICollectionViewDataSource {
     }
 
     private func cardCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> CardCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.identifier,
-                                                      for: indexPath) as! CardCell
+        let cell = collectionView.dequeue(CardCell.self, for: indexPath)
 
         let product = sections[indexPath.section - 1].products[indexPath.row]
         cell.configure(for: product)
@@ -119,7 +134,9 @@ extension HeroDetailViewController: UICollectionViewDelegateFlowLayout {
         guard kind == UICollectionView.elementKindSectionHeader,
             indexPath.section != 0 else { return UICollectionReusableView() }
 
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeroDetailSectionHeader.identifier, for: indexPath) as! HeroDetailSectionHeader
+        let header = collectionView.dequeueSupplementaryView(HeroDetailSectionHeader.self,
+                                                             for: indexPath,
+                                                             kind: UICollectionView.elementKindSectionHeader)
 
         header.titleLabel.text = sections[indexPath.section - 1].title
 

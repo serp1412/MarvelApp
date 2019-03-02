@@ -10,6 +10,7 @@
 		95ABF8A52AC306CA0454510E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0017EAECC0E0F582B92D99 /* Foundation.framework */; };
 		9D325FCF222B06E200DC3270 /* HeroDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FCE222B06E200DC3270 /* HeroDetailInteractor.swift */; };
 		9D325FD1222B06E900DC3270 /* HeroDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FD0222B06E900DC3270 /* HeroDetailBuilder.swift */; };
+		9D325FD8222B0AB100DC3270 /* Dequeuer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FD7222B0AB100DC3270 /* Dequeuer.swift */; };
 		9D4462A722273BD000E25672 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4462A522273BC000E25672 /* RequestType.swift */; };
 		9D47DE9D22287BB60089F0AE /* PageOffsetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DE9B22287BAC0089F0AE /* PageOffsetGenerator.swift */; };
 		9D47DE9F22287CCA0089F0AE /* HeroListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DE9E22287CCA0089F0AE /* HeroListInteractor.swift */; };
@@ -104,6 +105,7 @@
 		8F7FD48BFD9E5DDCD6435245 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = MarvelAppFramework/Info.plist; sourceTree = "<group>"; };
 		9D325FCE222B06E200DC3270 /* HeroDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailInteractor.swift; sourceTree = "<group>"; };
 		9D325FD0222B06E900DC3270 /* HeroDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailBuilder.swift; sourceTree = "<group>"; };
+		9D325FD7222B0AB100DC3270 /* Dequeuer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dequeuer.swift; sourceTree = "<group>"; };
 		9D4462A522273BC000E25672 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		9D47DE9B22287BAC0089F0AE /* PageOffsetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOffsetGenerator.swift; sourceTree = "<group>"; };
 		9D47DE9E22287CCA0089F0AE /* HeroListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListInteractor.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			children = (
 				9DDCBED92225D6EE00DD1C09 /* BundleExtensions.swift */,
 				9DDCBED82225D6EE00DD1C09 /* Nibloadable.swift */,
+				9D325FD7222B0AB100DC3270 /* Dequeuer.swift */,
 				9D47DEA22228877A0089F0AE /* UIViewExtensions.swift */,
 				9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */,
 				9DDCBED42225CB9A00DD1C09 /* MD5.swift */,
@@ -625,6 +628,7 @@
 				9DDCBEDB2225D6EF00DD1C09 /* Nibloadable.swift in Sources */,
 				CB9A40C89538110241BFA169 /* FrameworkDelegate.swift in Sources */,
 				9D47DEDE222AE0C80089F0AE /* HeroDetailSectionHeader.swift in Sources */,
+				9D325FD8222B0AB100DC3270 /* Dequeuer.swift in Sources */,
 				9DDCBED72225D66E00DD1C09 /* CardCell.swift in Sources */,
 				9DDCBEC22225C80800DD1C09 /* AppEnvironment.swift in Sources */,
 				9D47DEC4222AB6990089F0AE /* HeroDetailViewController.swift in Sources */,
