@@ -65,8 +65,9 @@ class HeroListInteractor: HeroListOutput {
             self?.view.hideLoading()
             switch result {
             case .success(let collection):
-                self?.paginationGenerator = .init(pageSize: 20,
-                                                  maxItemsCount: collection.total)
+                self?.paginationGenerator = .init(pageSize: collection.limit,
+                                                  maxItemsCount: collection.total,
+                                                  currentOffset: collection.limit)
                 self?.heroes = collection.results
                 self?.view.reloadData()
             case .failure: break

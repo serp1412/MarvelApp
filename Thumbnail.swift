@@ -25,4 +25,11 @@ struct Thumbnail: Codable {
         let urlString = path + type.string + "." + self.extension
         return URL(string: urlString)!
     }
+
+    init(path: String, extension: String) {
+        self.path = path
+        self.extension = `extension`
+    }
 }
+
+extension Thumbnail: Equatable {}

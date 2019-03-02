@@ -3,3 +3,5 @@ struct MarvelHero: Codable {
     let description: String
     let thumbnail: Thumbnail
 }
+
+extension MarvelHero: Equatable {}

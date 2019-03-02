@@ -4,17 +4,21 @@ struct PageOffsetGenerator {
     private var currentOffset = 0
 
     var allPagesLoaded: Bool {
-        return maxItemsCount <= currentOffset - pageSize
+        return maxItemsCount <= currentOffset
     }
 
-    init(pageSize: Int = 0, maxItemsCount: Int = 0) {
+    init(pageSize: Int = 0,
+         maxItemsCount: Int = 0,
+         currentOffset: Int = 0) {
         self.pageSize = pageSize
         self.maxItemsCount = maxItemsCount
+        self.currentOffset = currentOffset
     }
 
     mutating func next() -> Int {
+        let copy = currentOffset
         currentOffset += pageSize
-        return currentOffset
+        return copy
     }
 
     mutating func rewind() {
