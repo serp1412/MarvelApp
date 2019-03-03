@@ -5,7 +5,7 @@ struct HeroProductsRequest: RequestType {
     let endpoint: String
     let options: [String]
 
-    enum Kind {
+    enum Kind: CaseIterable {
         case comics
         case series
         case stories

@@ -71,6 +71,20 @@ class StubbableFuncCheck<T, Stub>: FuncCheck<T> {
     }
 }
 
+class ClosureStubFuncCheck<T, Stub>: FuncCheck<T> {
+    let filter: (T) -> ClosureStub<Stub>
+
+    init(filter: @escaping (T) -> ClosureStub<Stub> = { _ in .doNotCall }) {
+        self.filter = filter
+    }
+
+    func call(with parameter: T) -> ClosureStub<Stub> {
+        super.call(parameter)
+
+        return filter(parameter)
+    }
+}
+
 extension FuncCheck where T: Equatable {
     func wasCalled(with otherValue: T) -> Bool {
         return value == otherValue && wasCalled
@@ -78,32 +92,32 @@ extension FuncCheck where T: Equatable {
 }
 
 extension FuncCheck {
-    func wasCalled<V1, V2>(with otherTuple: (V1?, V2?)?) -> Bool
-        where V1: Equatable, V2: Equatable, T == (V1?, V2?) {
+    func wasCalled<V1, V2>(with otherTuple: (V1?, V2)?) -> Bool
+        where V1: Equatable, V2: Equatable, T == (V1?, V2) {
             return value == otherTuple && wasCalled
     }
 
-    func wasCalled<V1, V2>(with otherTuple: (V1?, V2)?) -> Bool
-        where V1: Equatable, V2: Equatable, T == (V1?, V2) {
-            return (value?.0, value?.1) == (otherTuple?.0, otherTuple?.1) && wasCalled
+    func wasCalled<V1, V2, V3>(with otherTuple: (V1, V2, V3)) -> Bool
+        where V1: Equatable, V2: Equatable, V3: Equatable, T == (V1, V2, V3) {
+            return value == otherTuple && wasCalled
     }
 
-    func wasCalled<V1, V2>(with otherTuple: (V1, V2?)?) -> Bool
-        where V1: Equatable, V2: Equatable, T == (V1, V2?) {
-            return (value?.0, value?.1) == (otherTuple?.0, otherTuple?.1) && wasCalled
-    }
-
-    func wasCalled<V1, V2>(with otherTuple: (V1, V2)?) -> Bool
-        where V1: Equatable, V2: Equatable, T == (V1, V2) {
-            return (value?.0, value?.1) == (otherTuple?.0, otherTuple?.1) && wasCalled
+    func wasEverCalled<V1, V2, V3>(with otherTuple: (V1, V2, V3)) -> Bool
+        where V1: Equatable, V2: Equatable, V3: Equatable, T == (V1, V2, V3) {
+            return values.contains(where: { $0 == otherTuple })
     }
 }
 
-func == <V1, V2>(lhs: (V1?, V2?)?, rhs: (V1?, V2?)?) -> Bool where V1: Equatable, V2: Equatable {
+func == <V1, V2>(lhs: (V1?, V2)?, rhs: (V1?, V2)?) -> Bool where V1: Equatable, V2: Equatable {
     switch (lhs, rhs) {
     case let (lValue?, rValue?):
         return lValue.0 == rValue.0 && lValue.1 == rValue.1
     default:
         return false
     }
+}
+
+func == <V1, V2, V3>(lhs: (V1, V2, V3)?, rhs: (V1, V2, V3)) -> Bool where V1: Equatable, V2: Equatable, V3: Equatable {
+    guard let lhs = lhs else { return false }
+    return lhs.0 == rhs.0 && lhs.1 == rhs.1 && lhs.2 == rhs.2
 }

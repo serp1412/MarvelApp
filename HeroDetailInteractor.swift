@@ -67,11 +67,8 @@ class HeroDetailInteractor: HeroDetailOutput {
         }
 
         view.showLoading()
-
-        fetchData(ofKind: .comics, withUpdate: addSection(kind:products:))
-        fetchData(ofKind: .series, withUpdate: addSection(kind:products:))
-        fetchData(ofKind: .stories, withUpdate: addSection(kind:products:))
-        fetchData(ofKind: .events, withUpdate: addSection(kind:products:))
+        HeroProductsRequest.Kind.allCases
+            .forEach { fetchData(ofKind: $0, withUpdate: addSection(kind:products:)) }
 
         dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
             self?.view.reloadData()
@@ -79,7 +76,8 @@ class HeroDetailInteractor: HeroDetailOutput {
         }
     }
 
-    private func fetchData(ofKind kind: HeroProductsRequest.Kind, withUpdate f: @escaping (HeroProductsRequest.Kind, [HeroProduct]) -> Void) {
+    private func fetchData(ofKind kind: HeroProductsRequest.Kind,
+                           withUpdate f: @escaping (HeroProductsRequest.Kind, [HeroProduct]) -> Void) {
         dispatchGroup.enter()
         AppEnvironment.current.api.getHeroProducts(kind: kind, heroId: hero.id, limit: 3) { [weak self] result in
             f(kind, result.value?.results ?? [])

@@ -8,6 +8,8 @@ class HeroListInteractorTests: XCTestCase {
     let pageSize = 20
 
     override func setUp() {
+        super.setUp()
+
         mockAPI = MockAPI()
         mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: .mocked(), count: pageSize))))
         mockInput = MockHeroListInput()
@@ -18,6 +20,8 @@ class HeroListInteractorTests: XCTestCase {
 
     override func tearDown() {
         AppEnvironment.popEnvironment()
+
+        super.tearDown()
     }
 
     // MARK: - viewDidLoad
