@@ -11,7 +11,7 @@ class HeroListInteractorTests: XCTestCase {
         super.setUp()
 
         mockAPI = MockAPI()
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: .mocked(), count: pageSize))))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: MarvelHero.mocked().repeat(pageSize))))
         mockInput = MockHeroListInput()
         interactor = HeroListInteractor()
         interactor.view = mockInput
@@ -179,7 +179,7 @@ class HeroListInteractorTests: XCTestCase {
 
     func test_willDisplayCellAtIndex_whenAtLastCellAndNextPageIsNotFetchingAndAllPagesAreLoaded_shouldNotTriggerRequest() {
         // GIVEN
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: .mocked(), count: pageSize), total: pageSize)))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: MarvelHero.mocked().repeat(pageSize), total: pageSize)))
         interactor.viewDidLoad()
         mockAPI.getHeroesFuncCheck.reset()
 
@@ -192,7 +192,7 @@ class HeroListInteractorTests: XCTestCase {
 
     func test_willDisplayCellAtIndex_whenAtLastCellAndNextPageIsNotFetchingAndNotAllPagesAreLoadedAndInSearchMode_shouldNotTriggerRequest() {
         // GIVEN
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: .mocked(), count: pageSize), total: pageSize * 2)))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: MarvelHero.mocked().repeat(pageSize), total: pageSize * 2)))
         interactor.viewDidLoad()
         mockAPI.getHeroesFuncCheck.reset()
         interactor.searchBarDidEndEditingWithText("Whatever text")
@@ -210,7 +210,7 @@ class HeroListInteractorTests: XCTestCase {
     func test_heroForIndex_whenNotInSearchMode_shouldReturnCorrectHero() {
         // GIVEN
         let expectedResult = MarvelHero.mocked(name: "Main List Hero")
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: expectedResult, count: pageSize))))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: expectedResult.repeat(pageSize))))
         interactor.viewDidLoad()
 
 
@@ -224,10 +224,10 @@ class HeroListInteractorTests: XCTestCase {
     func test_heroForIndex_whenInSearchMode_shouldReturnCorrectHero() {
         // GIVEN
         let mainHeroListResult = MarvelHero.mocked(name: "Main List Hero")
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: mainHeroListResult, count: pageSize))))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: mainHeroListResult.repeat(pageSize))))
         interactor.viewDidLoad()
         let expectedResult = MarvelHero.mocked(name: "Search List Hero")
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: expectedResult, count: pageSize))))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: expectedResult.repeat(pageSize))))
         interactor.searchBarDidEndEditingWithText("Some text")
 
         // WHEN
@@ -256,7 +256,7 @@ class HeroListInteractorTests: XCTestCase {
         // GIVEN
         interactor.viewDidLoad()
         let expectedResult = pageSize + 10
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: .mocked(), count: expectedResult), total: pageSize * 2)))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: MarvelHero.mocked().repeat(expectedResult), total: pageSize * 2)))
         interactor.searchBarDidEndEditingWithText("Some text")
 
         // WHEN
@@ -331,7 +331,7 @@ class HeroListInteractorTests: XCTestCase {
     func test_shouldShowFooter_whenHasLoadedHeroesAndIsNotInSearchModeAndAllPagesLoaded_shouldReturnFalse() {
         // GIVEN
         let expectedResult = false
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: .mocked(), count: pageSize), total: pageSize)))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: MarvelHero.mocked().repeat(pageSize), total: pageSize)))
         interactor.viewDidLoad()
 
         // WHEN
@@ -344,7 +344,7 @@ class HeroListInteractorTests: XCTestCase {
     func test_shouldShowFooter_whenHasLoadedHeroesAndIsNotInSearchModeAndNotAllPagesLoaded_shouldReturnTrue() {
         // GIVEN
         let expectedResult = true
-        mockAPI.getHeroesStub = .call(.success(.mocked(results:.init(repeating: .mocked(), count: pageSize), total: pageSize * 2)))
+        mockAPI.getHeroesStub = .call(.success(.mocked(results: MarvelHero.mocked().repeat(pageSize), total: pageSize * 2)))
         interactor.viewDidLoad()
 
         // WHEN

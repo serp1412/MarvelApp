@@ -211,7 +211,8 @@ class HeroDetailInteractorTests: XCTestCase {
 
     func test_numberOfItemsInSection_whenForOtherSections_shouldReturnTheCorrectNumber() {
         // GIVEN
-        mockAPI.getHeroProductsFuncCheck = .init(filter: { _ in .call(.success(.mocked(results: .init(repeating: .mocked(), count: 4)))) })
+        let results = HeroProduct.mocked().repeat(4)
+        mockAPI.getHeroProductsFuncCheck = .init(filter: { _ in .call(.success(.mocked(results: results))) })
         let expectedResult = 4
         interactor.viewDidLoad()
 
@@ -244,6 +245,25 @@ class HeroDetailInteractorTests: XCTestCase {
 
         // THEN
         XCTAssertEqual(result, expectedResult)
+    }
+
+    // MARK: - product(at indexPath:)
+
+    func test_productAtIndexPath_shouldReturnCorrectValue() {
+        // GIVEN
+        mockAPI.getHeroProductsFuncCheck = .init(filter: { (kind, _, _) in
+            switch kind {
+            case .comics: return .call(.success(.mocked(results: [.mocked()])))
+            default: return .doNotCall
+            }
+        })
+        interactor.viewDidLoad()
+
+        // WHEN
+        let result = interactor.product(at: .init(row: 0, section: 1))
+
+        // THEN
+        XCTAssertEqual(result, HeroProduct.mocked())
     }
 
     // MARK: - titleForSection

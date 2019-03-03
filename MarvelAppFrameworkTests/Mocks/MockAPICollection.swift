@@ -4,6 +4,12 @@ protocol MockableModel {
     static func mocked() -> Self
 }
 
+extension MockableModel {
+    func `repeat`(_ times: Int) -> [Self] {
+        return .init(repeating: self, count: times)
+    }
+}
+
 extension APICollection: MockableModel where T: MockableModel {
     static func mocked() -> APICollection<T> {
         return mocked(results: [])

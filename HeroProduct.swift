@@ -5,3 +5,5 @@ struct HeroProduct: Codable {
     let description: String?
     let thumbnail: Thumbnail?
 }
+
+extension HeroProduct: Equatable {}
