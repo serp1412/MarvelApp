@@ -2,7 +2,7 @@ import Foundation
 
 protocol APIType {
     func getHeroes(name: String?, offset: Int, completion: @escaping (Result<APICollection<MarvelHero>>) -> ())
-    func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: Int, limit: Int, completion: @escaping (Result<APICollection<HeroProduct>>) -> ())
+    func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: MarvelHero.Id, limit: Int, completion: @escaping (Result<APICollection<HeroProduct>>) -> ())
 }
 
 extension APIType {
@@ -10,7 +10,7 @@ extension APIType {
         getHeroes(name: name, offset: offset, completion: completion)
     }
 
-    func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: Int, limit: Int = 0, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
+    func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: MarvelHero.Id, limit: Int = 0, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
         getHeroProducts(kind: kind, heroId: heroId, limit: limit, completion: completion)
     }
 }
@@ -22,7 +22,7 @@ class API: APIType {
         perform(request: request, completion: completion)
     }
 
-    func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: Int, limit: Int, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
+    func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: MarvelHero.Id, limit: Int, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
         let request: HeroProductsRequest = .init(kind: kind, options: .heroId(heroId), limit > 0 ? .limit(limit) : nil)
 
         perform(request: request, completion: completion)

@@ -1,11 +1,11 @@
 import Foundation
 
 protocol FavoritesServiceType {
-    func isFavoriteHeroWithId(_ id: Int) -> Bool
-    func addHeroWithId(_ id: Int)
-    func removeHeroWithId(_ id: Int)
+    func isFavorite(_ id: MarvelHero.Id) -> Bool
+    func addHero(with id: MarvelHero.Id)
+    func removeHero(with id: MarvelHero.Id)
     func synchronize()
-    func toggleWithId(_ id: Int)
+    func toggle(with id: MarvelHero.Id)
 }
 
 class FavoritesService: FavoritesServiceType {
@@ -22,29 +22,30 @@ class FavoritesService: FavoritesServiceType {
         return path
     }
 
-    fileprivate lazy var favorites: [Int] = {
-        return NSArray(contentsOf: plistURL) as? [Int] ?? []
+    fileprivate lazy var favorites: [MarvelHero.Id] = {
+        let array = NSArray(contentsOf: plistURL) as? [Int] ?? []
+        return array.map { .init(rawValue: $0) }
     }()
 
-    func isFavoriteHeroWithId(_ id: Int) -> Bool {
+    func isFavorite(_ id: MarvelHero.Id) -> Bool {
         return favorites.contains(id)
     }
 
-    func addHeroWithId(_ id: Int) {
+    func addHero(with id: MarvelHero.Id) {
         favorites.append(id)
     }
 
-    func removeHeroWithId(_ id: Int) {
+    func removeHero(with id: MarvelHero.Id) {
         favorites.removeAll(where: { $0 == id })
     }
 
-    func toggleWithId(_ id: Int) {
-        isFavoriteHeroWithId(id) ?
-            removeHeroWithId(id) :
-            addHeroWithId(id)
+    func toggle(with id: MarvelHero.Id) {
+        isFavorite(id) ?
+            removeHero(with: id) :
+            addHero(with: id)
     }
 
     func synchronize() {
-        (favorites as NSArray).write(to: plistURL, atomically: true)
+        (favorites.map({ $0.rawValue }) as NSArray).write(to: plistURL, atomically: true)
     }
 }

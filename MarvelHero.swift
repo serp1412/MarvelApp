@@ -1,5 +1,6 @@
 struct MarvelHero: Codable {
-    let id: Int
+    typealias Id = Tagged<MarvelHero, Int>
+    let id: Id
     let name: String
     let description: String
     let thumbnail: Thumbnail

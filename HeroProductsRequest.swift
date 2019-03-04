@@ -22,7 +22,7 @@ struct HeroProductsRequest: RequestType {
     }
 
     enum Options {
-        case heroId(Int)
+        case heroId(MarvelHero.Id)
         case limit(Int)
 
         var string: String {

@@ -64,7 +64,7 @@ class HeroDetailInteractor: HeroDetailOutput {
     }
 
     func favoriteButtonTapped() {
-        AppEnvironment.current.favorites.toggleWithId(hero.id)
+        AppEnvironment.current.favorites.toggle(with: hero.id)
         configureFavorite()
     }
 
@@ -95,7 +95,7 @@ class HeroDetailInteractor: HeroDetailOutput {
     }
 
     private func configureFavorite() {
-        AppEnvironment.current.favorites.isFavoriteHeroWithId(hero.id) ?
+        AppEnvironment.current.favorites.isFavorite(hero.id) ?
             view.favorite() :
             view.unfavorite()
     }

@@ -41,6 +41,7 @@
 		9D47DEDE222AE0C80089F0AE /* HeroDetailSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DEDD222AE0C80089F0AE /* HeroDetailSectionHeader.swift */; };
 		9D8EDC3F222731AC009912FC /* HeroListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EDC3C22273189009912FC /* HeroListRequest.swift */; };
 		9DB09386222D5830003EFF7D /* MockFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB09385222D5830003EFF7D /* MockFavoritesService.swift */; };
+		9DB09388222D82C7003EFF7D /* Tagged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB09387222D82C7003EFF7D /* Tagged.swift */; };
 		9DDCBE902225B3ED00DD1C09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBE8F2225B3ED00DD1C09 /* AppDelegate.swift */; };
 		9DDCBE972225B3EE00DD1C09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DDCBE962225B3EE00DD1C09 /* Assets.xcassets */; };
 		9DDCBE9A2225B3EE00DD1C09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DDCBE982225B3EE00DD1C09 /* LaunchScreen.storyboard */; };
@@ -144,6 +145,7 @@
 		9D47DEDD222AE0C80089F0AE /* HeroDetailSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailSectionHeader.swift; sourceTree = "<group>"; };
 		9D8EDC3C22273189009912FC /* HeroListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListRequest.swift; sourceTree = "<group>"; };
 		9DB09385222D5830003EFF7D /* MockFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFavoritesService.swift; sourceTree = "<group>"; };
+		9DB09387222D82C7003EFF7D /* Tagged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tagged.swift; sourceTree = "<group>"; };
 		9DDCBE8C2225B3ED00DD1C09 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DDCBE8F2225B3ED00DD1C09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DDCBE912225B3ED00DD1C09 /* HeroListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewController.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			children = (
 				9DDCBED92225D6EE00DD1C09 /* BundleExtensions.swift */,
 				9DDCBED82225D6EE00DD1C09 /* Nibloadable.swift */,
+				9DB09387222D82C7003EFF7D /* Tagged.swift */,
 				9D325FD7222B0AB100DC3270 /* Dequeuer.swift */,
 				9D47DEA22228877A0089F0AE /* UIViewExtensions.swift */,
 				9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */,
@@ -666,6 +669,7 @@
 				9DDCBEDC2225D6EF00DD1C09 /* BundleExtensions.swift in Sources */,
 				9DDCBEE12225F33800DD1C09 /* UIImageViewExtensions.swift in Sources */,
 				9DDCBEC42225C80D00DD1C09 /* Environment.swift in Sources */,
+				9DB09388222D82C7003EFF7D /* Tagged.swift in Sources */,
 				9D325FCF222B06E200DC3270 /* HeroDetailInteractor.swift in Sources */,
 				9DDCBEDB2225D6EF00DD1C09 /* Nibloadable.swift in Sources */,
 				CB9A40C89538110241BFA169 /* FrameworkDelegate.swift in Sources */,

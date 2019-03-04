@@ -8,8 +8,8 @@ class MockAPI: APIType {
         getHeroesStub.call(completion)
     }
 
-    var getHeroProductsFuncCheck = ClosureStubFuncCheck<(HeroProductsRequest.Kind, Int, Int), Result<APICollection<HeroProduct>>>()
-    func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: Int, limit: Int, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
+    var getHeroProductsFuncCheck = ClosureStubFuncCheck<(HeroProductsRequest.Kind, MarvelHero.Id, Int), Result<APICollection<HeroProduct>>>()
+    func getHeroProducts(kind: HeroProductsRequest.Kind, heroId: MarvelHero.Id, limit: Int, completion: @escaping (Result<APICollection<HeroProduct>>) -> ()) {
         let stub = getHeroProductsFuncCheck.call(with: (kind, heroId, limit))
         stub.call(completion)
     }

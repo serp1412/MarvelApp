@@ -40,13 +40,13 @@ class CardCell: UICollectionViewCell {
     fileprivate var toggle = false
 
     @IBAction func toggleFavorite() {
-        hero.flatMap { AppEnvironment.current.favorites.toggleWithId($0.id) }
+        hero.flatMap { AppEnvironment.current.favorites.toggle(with: $0.id) }
         configureFavorite()
     }
 
     private var isFavoriteHero: Bool {
         guard let hero = hero else { return false }
-        return AppEnvironment.current.favorites.isFavoriteHeroWithId(hero.id)
+        return AppEnvironment.current.favorites.isFavorite(hero.id)
     }
 
     private func configureFavorite() {

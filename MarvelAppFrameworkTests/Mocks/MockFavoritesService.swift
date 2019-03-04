@@ -1,19 +1,19 @@
 @testable import MarvelAppFramework
 
 class MockFavoritesService: FavoritesServiceType {
-    var isFavoriteHeroWithIdFuncCheck = StubbableFuncCheck<Int, Bool>(stub: false)
-    func isFavoriteHeroWithId(_ id: Int) -> Bool {
+    var isFavoriteHeroWithIdFuncCheck = StubbableFuncCheck<MarvelHero.Id, Bool>(stub: false)
+    func isFavorite(_ id: MarvelHero.Id) -> Bool {
         isFavoriteHeroWithIdFuncCheck.call(id)
         return isFavoriteHeroWithIdFuncCheck.stub
     }
 
-    var addHeroWithIdFuncCheck = FuncCheck<Int>()
-    func addHeroWithId(_ id: Int) {
+    var addHeroWithIdFuncCheck = FuncCheck<MarvelHero.Id>()
+    func addHero(with id: MarvelHero.Id) {
         addHeroWithIdFuncCheck.call(id)
     }
 
-    var removeHeroWithIdFuncCheck = FuncCheck<Int>()
-    func removeHeroWithId(_ id: Int) {
+    var removeHeroWithIdFuncCheck = FuncCheck<MarvelHero.Id>()
+    func removeHero(with id: MarvelHero.Id) {
         removeHeroWithIdFuncCheck.call(id)
     }
 
@@ -22,8 +22,8 @@ class MockFavoritesService: FavoritesServiceType {
         synchronizeFuncCheck.call()
     }
 
-    var toggleWithIdFuncCheck = FuncCheck<Int>()
-    func toggleWithId(_ id: Int) {
+    var toggleWithIdFuncCheck = FuncCheck<MarvelHero.Id>()
+    func toggle(with id: MarvelHero.Id) {
         toggleWithIdFuncCheck.call(id)
     }
 }
