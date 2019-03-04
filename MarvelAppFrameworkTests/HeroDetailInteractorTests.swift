@@ -3,6 +3,7 @@ import XCTest
 
 class HeroDetailInteractorTests: XCTestCase {
     var mockAPI: MockAPI!
+    var mockFavorites: MockFavoritesService!
     var mockInput: MockHeroDetailInput!
     var interactor: HeroDetailInteractor!
     let totalNumberOfSections = 5
@@ -11,10 +12,11 @@ class HeroDetailInteractorTests: XCTestCase {
         super.setUp()
 
         mockAPI = MockAPI()
+        mockFavorites = MockFavoritesService()
         mockInput = MockHeroDetailInput()
         interactor = HeroDetailInteractor.init(hero: .mocked())
         interactor.view = mockInput
-        AppEnvironment.pushEnvironment(mockAPI)
+        AppEnvironment.pushEnvironment(api: mockAPI, favorites: mockFavorites)
     }
 
     override func tearDown() {
@@ -284,5 +286,41 @@ class HeroDetailInteractorTests: XCTestCase {
 
         // THEN
         XCTAssertEqual(result, expectedResult)
+    }
+
+    // MARK: - favoriteButtonTapped
+
+    func test_favoriteButtonTapped_shouldAlwaysCallFavoritesService() {
+        // GIVEN
+
+        // WHEN
+        interactor.favoriteButtonTapped()
+
+        // THEN
+        XCTAssertTrue(mockFavorites.toggleWithIdFuncCheck.wasCalled(with: MarvelHero.mocked().id))
+    }
+
+    func test_favoriteButtonTapped_whenHeroBecameFavorite_shouldCallFavorite() {
+        // GIVEN
+        mockFavorites.isFavoriteHeroWithIdFuncCheck = .init(stub: true)
+
+        // WHEN
+        interactor.favoriteButtonTapped()
+
+        // THEN
+        XCTAssertTrue(mockInput.favoriteFuncCheck.wasCalled)
+        XCTAssertTrue(mockInput.unfavoriteFuncCheck.wasNotCalled)
+    }
+
+    func test_favoriteButtonTapped_whenHeroWasUnfavorited_shouldCallFavorite() {
+        // GIVEN
+        mockFavorites.isFavoriteHeroWithIdFuncCheck = .init(stub: false)
+
+        // WHEN
+        interactor.favoriteButtonTapped()
+
+        // THEN
+        XCTAssertTrue(mockInput.unfavoriteFuncCheck.wasCalled)
+        XCTAssertTrue(mockInput.favoriteFuncCheck.wasNotCalled)
     }
 }

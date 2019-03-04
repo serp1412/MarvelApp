@@ -8,6 +8,7 @@ protocol HeroListOutput {
     var shouldShowFooter: Bool { get }
     var numberOfHeroes: Int { get }
     func viewDidLoad()
+    func viewDidAppear()
     func willDisplayCellAtIndex(_ index: Int)
     func heroForIndex(_ index: Int) -> MarvelHero
     func searchBarDidEndEditingWithText(_ text: String?)
@@ -27,6 +28,10 @@ class HeroListInteractor: HeroListOutput {
 
     func viewDidLoad() {
         fetchFirstHeroes()
+    }
+
+    func viewDidAppear() {
+        view.reloadData()
     }
 
     func willDisplayCellAtIndex(_ index: Int) {

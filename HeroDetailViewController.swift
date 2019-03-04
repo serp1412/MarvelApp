@@ -11,7 +11,16 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
 
         navigationItem.largeTitleDisplayMode = .never
         setupCollectionView()
+        setupBarButtonItem()
         interactor.viewDidLoad()
+    }
+
+    private func setupBarButtonItem() {
+        let image = UIImage(mr_named: "star")?.withRenderingMode(.alwaysTemplate)
+        navigationItem.rightBarButtonItem =  .init(image: image,
+                                                   style: .plain,
+                                                   target: self,
+                                                   action: #selector(favoriteButtonTapped))
     }
 
     private func setupCollectionView() {
@@ -24,9 +33,21 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
         layout.minimumInteritemSpacing = 10
         collectionView.collectionViewLayout = layout
     }
+
+    @objc private func favoriteButtonTapped() {
+        interactor.favoriteButtonTapped()
+    }
 }
 
 extension HeroDetailViewController: HeroDetailInput {
+    func favorite() {
+        navigationItem.rightBarButtonItem?.tintColor = .red
+    }
+
+    func unfavorite() {
+        navigationItem.rightBarButtonItem?.tintColor = .gray
+    }
+
     func reloadData() {
         collectionView.reloadData()
     }

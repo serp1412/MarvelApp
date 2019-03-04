@@ -15,4 +15,12 @@ public class FrameworkDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+
+    public func applicationDidEnterBackground(_ application: UIApplication) {
+        AppEnvironment.current.favorites.synchronize()
+    }
+
+    public func applicationWillTerminate(_ application: UIApplication) {
+        AppEnvironment.current.favorites.synchronize()
+    }
 }

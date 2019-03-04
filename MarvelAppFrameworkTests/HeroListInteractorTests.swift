@@ -15,7 +15,7 @@ class HeroListInteractorTests: XCTestCase {
         mockInput = MockHeroListInput()
         interactor = HeroListInteractor()
         interactor.view = mockInput
-        AppEnvironment.pushEnvironment(mockAPI)
+        AppEnvironment.pushEnvironment(api: mockAPI)
     }
 
     override func tearDown() {
@@ -84,6 +84,19 @@ class HeroListInteractorTests: XCTestCase {
         // THEN
         XCTAssertTrue(mockInput.reloadDataFuncCheck.wasNotCalled)
     }
+
+    // MARK: - viewDidAppear
+
+    func test_viewDidAppear_shouldCallReloadData() {
+        // GIVEN
+
+        // WHEN
+        interactor.viewDidAppear()
+
+        // THEN
+        XCTAssertTrue(mockInput.reloadDataFuncCheck.wasCalled)
+    }
+
 
     // MARK: - willDisplayCellAtIndex
 

@@ -15,8 +15,10 @@ struct AppEnvironment {
         environments.append(environment)
     }
 
-    static func pushEnvironment(_ api: APIType) {
-        environments.append(Environment(api: api))
+    static func pushEnvironment(api: APIType = current.api,
+                                favorites: FavoritesServiceType = current.favorites) {
+        environments.append(Environment(api: api,
+                                        favorites: favorites))
     }
 
     @discardableResult

@@ -15,5 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return frameworkDelegate.application(application, didFinishLaunchingWithOptions:launchOptions)
     }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        frameworkDelegate.applicationDidEnterBackground(application)
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        frameworkDelegate.applicationWillTerminate(application)
+    }
 }
 

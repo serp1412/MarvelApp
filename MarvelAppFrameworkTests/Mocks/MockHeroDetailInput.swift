@@ -15,4 +15,14 @@ class MockHeroDetailInput: HeroDetailInput {
     func hideLoading() {
         hideLoadingFuncCheck.call()
     }
+
+    var favoriteFuncCheck = ZeroArgumentsFuncCheck()
+    func favorite() {
+        favoriteFuncCheck.call()
+    }
+
+    var unfavoriteFuncCheck = ZeroArgumentsFuncCheck()
+    func unfavorite() {
+        unfavoriteFuncCheck.call()
+    }
 }

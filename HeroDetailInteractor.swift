@@ -4,6 +4,8 @@ protocol HeroDetailInput {
     func reloadData()
     func showLoading()
     func hideLoading()
+    func favorite()
+    func unfavorite()
 }
 
 enum DetailCellType {
@@ -19,6 +21,7 @@ protocol HeroDetailOutput {
     func cellTypeForSection(_ section: Int) -> DetailCellType
     func product(at indexPath: IndexPath) -> HeroProduct
     func titleForSection(_ section: Int) -> String
+    func favoriteButtonTapped()
 }
 
 class HeroDetailInteractor: HeroDetailOutput {
@@ -41,6 +44,7 @@ class HeroDetailInteractor: HeroDetailOutput {
 
     func viewDidLoad() {
         fetchData()
+        configureFavorite()
     }
 
     func numberOfItemsInSection(_ section: Int) -> Int {
@@ -57,6 +61,11 @@ class HeroDetailInteractor: HeroDetailOutput {
 
     func titleForSection(_ section: Int) -> String {
         return sections[section - 1].title
+    }
+
+    func favoriteButtonTapped() {
+        AppEnvironment.current.favorites.toggleWithId(hero.id)
+        configureFavorite()
     }
 
     private func fetchData() {
@@ -83,6 +92,12 @@ class HeroDetailInteractor: HeroDetailOutput {
             f(kind, result.value?.results ?? [])
             self?.dispatchGroup.leave()
         }
+    }
+
+    private func configureFavorite() {
+        AppEnvironment.current.favorites.isFavoriteHeroWithId(hero.id) ?
+            view.favorite() :
+            view.unfavorite()
     }
 }
 

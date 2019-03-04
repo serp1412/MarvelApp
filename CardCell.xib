@@ -38,31 +38,48 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t73-6R-hLc">
+                    <rect key="frame" x="327" y="224" width="38" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="38" id="2Hz-8i-6OS"/>
+                        <constraint firstAttribute="height" constant="38" id="dk9-I9-Zf1"/>
+                    </constraints>
+                    <state key="normal" image="star"/>
+                    <connections>
+                        <action selector="toggleFavorite" destination="iN0-l3-epB" eventType="touchUpInside" id="rYr-6a-RwB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZcB-dZ-e6X" secondAttribute="bottom" constant="50" id="5ok-FD-3Nd"/>
                 <constraint firstItem="i0m-BL-JWk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="35" id="61q-xR-g1d"/>
                 <constraint firstItem="i0m-BL-JWk" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="A44-YL-WYe"/>
                 <constraint firstItem="csb-CP-5iK" firstAttribute="leading" secondItem="3j9-r7-5hU" secondAttribute="trailing" constant="15" id="CEE-dh-PTO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3j9-r7-5hU" secondAttribute="bottom" constant="8" id="Gdk-zQ-ngO"/>
                 <constraint firstItem="i0m-BL-JWk" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="IrP-zs-Rfm"/>
                 <constraint firstItem="3j9-r7-5hU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="LG0-DW-q9T"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZcB-dZ-e6X" secondAttribute="bottom" constant="10" id="Oow-m7-G9q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="csb-CP-5iK" secondAttribute="trailing" constant="10" id="Rpj-O6-fmc"/>
                 <constraint firstItem="i0m-BL-JWk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VWr-MP-ntt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="t73-6R-hLc" secondAttribute="trailing" constant="10" id="gSL-cZ-aX0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZcB-dZ-e6X" secondAttribute="trailing" constant="10" id="ohf-Or-vCE"/>
                 <constraint firstItem="ZcB-dZ-e6X" firstAttribute="top" secondItem="csb-CP-5iK" secondAttribute="bottom" constant="8" id="pdQ-FJ-dIZ"/>
                 <constraint firstItem="ZcB-dZ-e6X" firstAttribute="leading" secondItem="csb-CP-5iK" secondAttribute="leading" id="qJx-rl-DUb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="t73-6R-hLc" secondAttribute="bottom" constant="10" id="rPH-dR-jZx"/>
                 <constraint firstItem="csb-CP-5iK" firstAttribute="top" secondItem="i0m-BL-JWk" secondAttribute="top" constant="15" id="yh4-P6-VdE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="descriptionLabel" destination="ZcB-dZ-e6X" id="0vC-dc-PRo"/>
+                <outlet property="favoriteButton" destination="t73-6R-hLc" id="2xO-CX-jSi"/>
                 <outlet property="imageView" destination="3j9-r7-5hU" id="mmh-uK-6Rn"/>
                 <outlet property="titleLabel" destination="csb-CP-5iK" id="xZ1-ah-Jvk"/>
             </connections>
             <point key="canvasLocation" x="-47.200000000000003" y="23.388305847076463"/>
         </view>
     </objects>
+    <resources>
+        <image name="star" width="43.115791320800781" height="43.115791320800781"/>
+    </resources>
 </document>

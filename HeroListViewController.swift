@@ -16,6 +16,12 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
         interactor.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        interactor.viewDidAppear()
+    }
+
     private func setupNavigationItem() {
         navigationItem.title = "Heroes"
         navigationItem.searchController = UISearchController(searchResultsController: nil)
