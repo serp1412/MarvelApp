@@ -6,8 +6,7 @@ enum Result<T> {
 extension Result {
     var value: T? {
         switch self {
-        case .success(let value):
-            return value
+        case .success(let value): return value
         case .failure: return nil
         }
     }

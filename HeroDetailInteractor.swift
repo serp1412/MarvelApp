@@ -14,9 +14,9 @@ enum DetailCellType {
 }
 
 protocol HeroDetailOutput {
-    func viewDidLoad()
     var numberOfSections: Int { get }
     var hero: MarvelHero { get }
+    func viewDidLoad()
     func numberOfItemsInSection(_ section: Int) -> Int
     func cellTypeForSection(_ section: Int) -> DetailCellType
     func product(at indexPath: IndexPath) -> HeroProduct
@@ -25,7 +25,7 @@ protocol HeroDetailOutput {
 }
 
 class HeroDetailInteractor: HeroDetailOutput {
-    struct Section {
+    private struct Section {
         let title: String
         let products: [HeroProduct]
     }
@@ -86,10 +86,10 @@ class HeroDetailInteractor: HeroDetailOutput {
     }
 
     private func fetchData(ofKind kind: HeroProductsRequest.Kind,
-                           withUpdate f: @escaping (HeroProductsRequest.Kind, [HeroProduct]) -> Void) {
+                           withUpdate update: @escaping (HeroProductsRequest.Kind, [HeroProduct]) -> Void) {
         dispatchGroup.enter()
         AppEnvironment.current.api.getHeroProducts(kind: kind, heroId: hero.id, limit: 3) { [weak self] result in
-            f(kind, result.value?.results ?? [])
+            update(kind, result.value?.results ?? [])
             self?.dispatchGroup.leave()
         }
     }

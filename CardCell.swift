@@ -4,7 +4,7 @@ class CardCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet private weak var favoriteButton: UIButton!
     private var hero: MarvelHero?
 
     override func awakeFromNib() {
@@ -37,9 +37,13 @@ class CardCell: UICollectionViewCell {
         imageView.loadImage(at: thumbnail.url(for: .portrait))
     }
 
-    fileprivate var toggle = false
+    override func prepareForReuse() {
+        super.prepareForReuse()
 
-    @IBAction func toggleFavorite() {
+        imageView.image = nil
+    }
+
+    @IBAction private func toggleFavorite() {
         hero.flatMap { AppEnvironment.current.favorites.toggle(with: $0.id) }
         configureFavorite()
     }
@@ -51,12 +55,6 @@ class CardCell: UICollectionViewCell {
 
     private func configureFavorite() {
         favoriteButton.tintColor = isFavoriteHero ? .red : .gray
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        imageView.image = nil
     }
 }
 
