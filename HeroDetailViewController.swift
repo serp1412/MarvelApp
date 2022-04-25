@@ -16,7 +16,7 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
     }
 
     private func setupBarButtonItem() {
-        let image = UIImage(mr_named: "star")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
         navigationItem.rightBarButtonItem =  .init(image: image,
                                                    style: .plain,
                                                    target: self,

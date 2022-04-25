@@ -1,5 +1,5 @@
 import XCTest
-@testable import MarvelAppFramework
+@testable import MarvelApp
 
 class HeroDetailInteractorTests: XCTestCase {
     var mockAPI: MockAPI!

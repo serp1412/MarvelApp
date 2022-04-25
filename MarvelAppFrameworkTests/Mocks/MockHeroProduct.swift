@@ -1,4 +1,4 @@
-@testable import MarvelAppFramework
+@testable import MarvelApp
 
 extension HeroProduct: MockableModel {
     static func mocked() -> HeroProduct {

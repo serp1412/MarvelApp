@@ -1,4 +1,4 @@
-@testable import MarvelAppFramework
+@testable import MarvelApp
 
 protocol MockableModel {
     static func mocked() -> Self

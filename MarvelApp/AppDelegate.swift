@@ -1,27 +1,28 @@
 import UIKit
-import MarvelAppFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    private lazy var frameworkDelegate: FrameworkDelegate = {
-        let delegate = FrameworkDelegate()
-        delegate.window = self.window
-
-        return delegate
-    }()
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        return frameworkDelegate.application(application, didFinishLaunchingWithOptions:launchOptions)
+    func application(_ application: UIApplication,
+                            didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        window = UIWindow()
+        window?.rootViewController = HeroListBuilder.build()
+        window?.makeKeyAndVisible()
+
+        UINavigationBar.appearance().backgroundColor = .white
+        UINavigationBar.appearance().prefersLargeTitles = true
+        
+        return true
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        frameworkDelegate.applicationDidEnterBackground(application)
+        AppEnvironment.current.favorites.synchronize()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        frameworkDelegate.applicationWillTerminate(application)
+        AppEnvironment.current.favorites.synchronize()
     }
 }
 

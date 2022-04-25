@@ -1,4 +1,4 @@
-@testable import MarvelAppFramework
+@testable import MarvelApp
 
 class MockAPI: APIType {
     var getHeroesStub = ClosureStub<Result<APICollection<MarvelHero>>>.doNotCall

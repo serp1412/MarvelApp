@@ -48,12 +48,22 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9D47DEA722288C1E0089F0AE"
                BuildableName = "MarvelAppFrameworkTests.xctest"
                BlueprintName = "MarvelAppFrameworkTests"
+               ReferencedContainer = "container:MarvelApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF9E54772817260700759DC3"
+               BuildableName = "MarvelAppTests.xctest"
+               BlueprintName = "MarvelAppTests"
                ReferencedContainer = "container:MarvelApp.xcodeproj">
             </BuildableReference>
          </TestableReference>

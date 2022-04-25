@@ -16,7 +16,8 @@ class CardCell: UICollectionViewCell {
         imageView.backgroundColor = UIColor.lightGray
         isUserInteractionEnabled = true
         bringSubviewToFront(favoriteButton)
-        let image = UIImage(mr_named: "star")?.withRenderingMode(.alwaysTemplate)
+        
+        let image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
         favoriteButton.setImage(image, for: .normal)
 
     }

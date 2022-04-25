@@ -1,4 +1,4 @@
-@testable import MarvelAppFramework
+@testable import MarvelApp
 
 class MockFavoritesService: FavoritesServiceType {
     var isFavoriteHeroWithIdFuncCheck = StubbableFuncCheck<MarvelHero.Id, Bool>(stub: false)

@@ -1,4 +1,4 @@
-@testable import MarvelAppFramework
+@testable import MarvelApp
 
 class MockHeroDetailInput: HeroDetailInput {
     var reloadDataFuncCheck = ZeroArgumentsFuncCheck()

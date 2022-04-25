@@ -42,10 +42,7 @@
 import Foundation
 import UIKit
 import PlaygroundSupport
-@testable import MarvelAppFramework
-
-FrameworkDelegate().application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
-
+@testable import MarvelApp
 
 let navVC = HeroListBuilder.build()
 
