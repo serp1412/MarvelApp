@@ -10,7 +10,7 @@ public extension Identifiable {
     }
 }
 
-public protocol NibLoadable: class, Identifiable {
+public protocol NibLoadable: AnyObject, Identifiable {
     static var nibName: String { get }
 }
 

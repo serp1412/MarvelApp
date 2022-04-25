@@ -156,7 +156,6 @@
 		9DDCBEAB2225B3EF00DD1C09 /* MarvelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DDCBEAF2225B3EF00DD1C09 /* MarvelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUITests.swift; sourceTree = "<group>"; };
 		9DDCBEB12225B3EF00DD1C09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9DDCBEBE2225B55800DD1C09 /* MarvelApp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarvelApp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9DDCBEC12225C80800DD1C09 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		9DDCBEC32225C80D00DD1C09 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9DDCBEC52225C9BF00DD1C09 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -172,6 +171,7 @@
 		9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		9DDCBEDE2225D72400DD1C09 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		9DDCBEE02225F33800DD1C09 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		AFEAB51D281722D200A1679B /* MarvelApp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarvelApp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,7 +357,7 @@
 		9DDCBE832225B3EC00DD1C09 = {
 			isa = PBXGroup;
 			children = (
-				9DDCBEBE2225B55800DD1C09 /* MarvelApp.playground */,
+				AFEAB51D281722D200A1679B /* MarvelApp.playground */,
 				9DDCBE8E2225B3ED00DD1C09 /* MarvelApp */,
 				972564EC6BC47FA79337DC84 /* MarvelAppFramework */,
 				9DDCBEAE2225B3EF00DD1C09 /* MarvelAppUITests */,
@@ -549,18 +549,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = TestCompany;
 				TargetAttributes = {
 					9D47DEA722288C1E0089F0AE = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1330;
 					};
 					9DDCBE8B2225B3ED00DD1C09 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1330;
 					};
 					9DDCBEAA2225B3EF00DD1C09 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1330;
 						TestTargetID = 9DDCBE8B2225B3ED00DD1C09;
+					};
+					C259631A3FA9E102DFA98C3F = {
+						LastSwiftMigration = 1330;
 					};
 				};
 			};
@@ -764,7 +770,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -785,7 +791,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testcompany.MarvelAppFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -803,7 +809,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testcompany.MarvelAppFrameworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -834,6 +840,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -895,6 +902,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -939,7 +947,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testcompany.MarvelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -958,7 +966,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testcompany.MarvelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -977,7 +985,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testcompany.MarvelAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MarvelApp;
 			};
@@ -997,7 +1005,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testcompany.MarvelAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MarvelApp;
 			};
@@ -1026,7 +1034,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

@@ -25,7 +25,7 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
     private func setupNavigationItem() {
         navigationItem.title = "Heroes"
         navigationItem.searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController?.dimsBackgroundDuringPresentation = false
+        navigationItem.searchController?.obscuresBackgroundDuringPresentation = true
         navigationItem.searchController?.searchBar.delegate = self
         navigationItem.searchController?.delegate = self
     }

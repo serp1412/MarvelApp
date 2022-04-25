@@ -1,6 +1,6 @@
 import UIKit
 
-protocol StoryboardInstantiable: class {
+protocol StoryboardInstantiable: AnyObject {
     static var storyboardName: String { get }
     static var identifier: String { get }
     static func instantiate() -> Self
