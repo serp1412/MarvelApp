@@ -5,6 +5,7 @@ protocol HeroListInput {
 }
 
 protocol HeroListOutput {
+    var view: HeroListInput! { get set }
     var shouldShowFooter: Bool { get }
     var numberOfHeroes: Int { get }
     func viewDidLoad()
@@ -91,6 +92,9 @@ class HeroListInteractor: HeroListOutput {
     }
 
     private func shouldFetchNextPage(at index: Int) -> Bool {
-        return index + 1 >= heroes.count && !nextPageFetchingInProgress && !allPagesLoaded && !isInSearchMode
+        return index + 1 >= heroes.count &&
+            !nextPageFetchingInProgress &&
+            !allPagesLoaded &&
+            !isInSearchMode
     }
 }

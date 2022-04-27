@@ -14,6 +14,7 @@ enum DetailCellType {
 }
 
 protocol HeroDetailOutput {
+    var view: HeroDetailInput! { get set }
     var numberOfSections: Int { get }
     var hero: MarvelHero { get }
     func viewDidLoad()
@@ -77,7 +78,7 @@ class HeroDetailInteractor: HeroDetailOutput {
 
         view.showLoading()
         HeroProductsRequest.Kind.allCases
-            .forEach { fetchData(ofKind: $0, withUpdate: addSection(kind:products:)) }
+            .forEach { fetchData(ofKind: $0, withUpdate: addSection(kind: products:)) }
 
         dispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
             self?.view.reloadData()
@@ -96,7 +97,7 @@ class HeroDetailInteractor: HeroDetailOutput {
 
     private func configureFavorite() {
         AppEnvironment.current.favorites.isFavorite(hero.id) ?
-            view.favorite() :
+        view.favorite():
             view.unfavorite()
     }
 }

@@ -17,10 +17,10 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
 
     private func setupBarButtonItem() {
         let image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
-        navigationItem.rightBarButtonItem =  .init(image: image,
-                                                   style: .plain,
-                                                   target: self,
-                                                   action: #selector(favoriteButtonTapped))
+        navigationItem.rightBarButtonItem = .init(image: image,
+                                                  style: .plain,
+                                                  target: self,
+                                                  action: #selector(favoriteButtonTapped))
     }
 
     private func setupCollectionView() {
@@ -51,7 +51,7 @@ extension HeroDetailViewController: HeroDetailInput {
     func reloadData() {
         collectionView.reloadData()
     }
-    
+
     func showLoading() {
         guard loadingIndicator == nil else { return }
         let indicator = UIActivityIndicatorView(style: .gray)
@@ -71,26 +71,29 @@ extension HeroDetailViewController: UICollectionViewDataSource {
         return interactor.numberOfSections
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection
-        section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return interactor.numberOfItemsInSection(section)
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch interactor.cellTypeForSection(indexPath.section) {
         case .poster: return posterCell(collectionView, cellForItemAt: indexPath)
         case .card: return cardCell(collectionView, cellForItemAt: indexPath)
         }
     }
 
-    private func posterCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> PosterCell {
+    private func posterCell(_ collectionView: UICollectionView,
+                            cellForItemAt indexPath: IndexPath) -> PosterCell {
         let cell = collectionView.dequeue(PosterCell.self, for: indexPath)
         cell.configure(with: interactor.hero)
 
         return cell
     }
 
-    private func cardCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> CardCell {
+    private func cardCell(_ collectionView: UICollectionView,
+                          cellForItemAt indexPath: IndexPath) -> CardCell {
         let cell = collectionView.dequeue(CardCell.self, for: indexPath)
         cell.configure(for: interactor.product(at: indexPath))
 
@@ -99,20 +102,26 @@ extension HeroDetailViewController: UICollectionViewDataSource {
 }
 
 extension HeroDetailViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         return section > 0 ?
-            .init(width: collectionView.frame.width, height: 50) :
+            .init(width: collectionView.frame.width, height: 50):
             .zero
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         return indexPath.section == 0 ?
-            .init(width: collectionView.frame.width, height: 300) :
+            .init(width: collectionView.frame.width, height: 300):
             .init(width: collectionView.frame.width, height: 272)
     }
 
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader,
             indexPath.section != 0 else { return UICollectionReusableView() }
 

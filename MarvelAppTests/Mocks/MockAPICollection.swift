@@ -15,7 +15,11 @@ extension APICollection: MockableModel where T: MockableModel {
         return mocked(results: [])
     }
 
-    static func mocked(results: [T] = [.mocked()], offset: Int = 0, limit: Int = 20, total: Int = 100, count: Int = 0) -> APICollection<T> {
+    static func mocked(results: [T] = [.mocked()],
+                       offset: Int = 0,
+                       limit: Int = 20,
+                       total: Int = 100,
+                       count: Int = 0) -> APICollection<T> {
         return .init(results: results,
                      offset: offset,
                      limit: limit,
