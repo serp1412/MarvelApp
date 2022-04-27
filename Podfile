@@ -2,10 +2,8 @@
 # platform :ios, '9.0'
 
 target 'MarvelApp' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for MarvelApp
+  pod 'LazyTransitions'
 
   target 'MarvelAppTests' do
     inherit! :search_paths
@@ -13,7 +11,6 @@ target 'MarvelApp' do
   end
 
   target 'MarvelAppUITests' do
-    # Pods for testing
   end
 
 end

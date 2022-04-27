@@ -1,16 +1,20 @@
 PODS:
+  - LazyTransitions (1.0.0)
   - SnapshotTesting (1.9.0)
 
 DEPENDENCIES:
+  - LazyTransitions
   - SnapshotTesting (~> 1.9.0)
 
 SPEC REPOS:
   trunk:
+    - LazyTransitions
     - SnapshotTesting
 
 SPEC CHECKSUMS:
+  LazyTransitions: 70f172ff876f2ff320283538aab3a02f3adec54b
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
 
-PODFILE CHECKSUM: eef7a9ef12702c526e713f2bc5b3fd8c91d250c6
+PODFILE CHECKSUM: bc93b3b0b33db5fdf4b0d498507dd30a6e9f5fdc
 
 COCOAPODS: 1.11.2
