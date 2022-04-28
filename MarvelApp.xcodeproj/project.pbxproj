@@ -17,6 +17,14 @@
 		AF04B933281850DE002A9C02 /* MockHeroListOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B932281850DE002A9C02 /* MockHeroListOutput.swift */; };
 		AF04B935281854AB002A9C02 /* HeroDetailSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B934281854AB002A9C02 /* HeroDetailSnapshotTests.swift */; };
 		AF04B93728185508002A9C02 /* MockHeroDetailOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B93628185508002A9C02 /* MockHeroDetailOutput.swift */; };
+		AF04B93A281B2C9B002A9C02 /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B939281B2C9B002A9C02 /* ActionSheet.swift */; };
+		AF04B941281B2D93002A9C02 /* ActionSheetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B93B281B2D93002A9C02 /* ActionSheetConfiguration.swift */; };
+		AF04B942281B2D93002A9C02 /* ActionSheetAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B93C281B2D93002A9C02 /* ActionSheetAnimator.swift */; };
+		AF04B943281B2D93002A9C02 /* DefaultActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B93D281B2D93002A9C02 /* DefaultActionView.swift */; };
+		AF04B944281B2D93002A9C02 /* ActionSheetConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B93E281B2D93002A9C02 /* ActionSheetConstants.swift */; };
+		AF04B945281B2D93002A9C02 /* ActionSheetTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B93F281B2D93002A9C02 /* ActionSheetTransitionDelegate.swift */; };
+		AF04B946281B2D93002A9C02 /* ActionSheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B940281B2D93002A9C02 /* ActionSheetPresenter.swift */; };
+		AF04B948281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B947281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift */; };
 		AF9E544D2817257A00759DC3 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEC12225C80800DD1C09 /* AppEnvironment.swift */; };
 		AF9E544E2817257D00759DC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEC32225C80D00DD1C09 /* Environment.swift */; };
 		AF9E544F2817259800759DC3 /* HeroDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D47DED1222AC9FD0089F0AE /* HeroDetail.storyboard */; };
@@ -34,12 +42,11 @@
 		AF9E545E281725B300759DC3 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDCBEDE2225D72400DD1C09 /* CardCell.xib */; };
 		AF9E545F281725BA00759DC3 /* Tagged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB09387222D82C7003EFF7D /* Tagged.swift */; };
 		AF9E5460281725BA00759DC3 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */; };
-		AF9E5462281725BA00759DC3 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DEA22228877A0089F0AE /* UIViewExtensions.swift */; };
+		AF9E5462281725BA00759DC3 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47DEA22228877A0089F0AE /* UIView+Extensions.swift */; };
 		AF9E5463281725BA00759DC3 /* Nibloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBED82225D6EE00DD1C09 /* Nibloadable.swift */; };
-		AF9E5464281725BA00759DC3 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBED92225D6EE00DD1C09 /* BundleExtensions.swift */; };
 		AF9E5465281725BA00759DC3 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBED42225CB9A00DD1C09 /* MD5.swift */; };
 		AF9E5466281725BA00759DC3 /* Dequeuer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FD7222B0AB100DC3270 /* Dequeuer.swift */; };
-		AF9E5467281725BA00759DC3 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEE02225F33800DD1C09 /* UIImageViewExtensions.swift */; };
+		AF9E5467281725BA00759DC3 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEE02225F33800DD1C09 /* UIImageView+Extensions.swift */; };
 		AF9E5468281725C300759DC3 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D325FE7222C1D7E00DC3270 /* FavoritesService.swift */; };
 		AF9E5469281725C900759DC3 /* HeroListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EDC3C22273189009912FC /* HeroListRequest.swift */; };
 		AF9E546A281725C900759DC3 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBED12225CB4F00DD1C09 /* Result.swift */; };
@@ -116,7 +123,7 @@
 		9D47DE9B22287BAC0089F0AE /* PageOffsetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOffsetGenerator.swift; sourceTree = "<group>"; };
 		9D47DE9E22287CCA0089F0AE /* HeroListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListInteractor.swift; sourceTree = "<group>"; };
 		9D47DEA022287D870089F0AE /* HeroListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListBuilder.swift; sourceTree = "<group>"; };
-		9D47DEA22228877A0089F0AE /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		9D47DEA22228877A0089F0AE /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		9D47DEAA22288C1E0089F0AE /* HeroListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListInteractorTests.swift; sourceTree = "<group>"; };
 		9D47DEB322288CAB0089F0AE /* FuncCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncCheck.swift; sourceTree = "<group>"; };
 		9D47DEB722288EA30089F0AE /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
@@ -156,15 +163,22 @@
 		9DDCBED42225CB9A00DD1C09 /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		9DDCBED62225D66E00DD1C09 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		9DDCBED82225D6EE00DD1C09 /* Nibloadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nibloadable.swift; sourceTree = "<group>"; };
-		9DDCBED92225D6EE00DD1C09 /* BundleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
 		9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		9DDCBEDE2225D72400DD1C09 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
-		9DDCBEE02225F33800DD1C09 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		9DDCBEE02225F33800DD1C09 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		A23BF120B0C8C34C72B32E21 /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
 		AF04B93028184FEF002A9C02 /* HeroListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListSnapshotTests.swift; sourceTree = "<group>"; };
 		AF04B932281850DE002A9C02 /* MockHeroListOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHeroListOutput.swift; sourceTree = "<group>"; };
 		AF04B934281854AB002A9C02 /* HeroDetailSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailSnapshotTests.swift; sourceTree = "<group>"; };
 		AF04B93628185508002A9C02 /* MockHeroDetailOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHeroDetailOutput.swift; sourceTree = "<group>"; };
+		AF04B939281B2C9B002A9C02 /* ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
+		AF04B93B281B2D93002A9C02 /* ActionSheetConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetConfiguration.swift; sourceTree = "<group>"; };
+		AF04B93C281B2D93002A9C02 /* ActionSheetAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetAnimator.swift; sourceTree = "<group>"; };
+		AF04B93D281B2D93002A9C02 /* DefaultActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultActionView.swift; sourceTree = "<group>"; };
+		AF04B93E281B2D93002A9C02 /* ActionSheetConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetConstants.swift; sourceTree = "<group>"; };
+		AF04B93F281B2D93002A9C02 /* ActionSheetTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetTransitionDelegate.swift; sourceTree = "<group>"; };
+		AF04B940281B2D93002A9C02 /* ActionSheetPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetPresenter.swift; sourceTree = "<group>"; };
+		AF04B947281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewControllerTransitionCoordinator+Extensions.swift"; sourceTree = "<group>"; };
 		AF9E54782817260700759DC3 /* MarvelAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEAB51D281722D200A1679B /* MarvelApp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarvelApp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BAE7549EBD199889EFF3A3C6 /* Pods_MarvelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,21 +249,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		972564EC6BC47FA79337DC84 /* MarvelAppFramework */ = {
-			isa = PBXGroup;
-			children = (
-				9DDCBEC12225C80800DD1C09 /* AppEnvironment.swift */,
-				9DDCBEC32225C80D00DD1C09 /* Environment.swift */,
-				9D325FE1222C175600DC3270 /* Resources */,
-				9D325FCB222B06AD00DC3270 /* Modules */,
-				9D325FD3222B070500DC3270 /* UI */,
-				9DDCBED32225CB9000DD1C09 /* Helpers */,
-				9D325FE6222C1D6100DC3270 /* Services */,
-				9DDCBEC72225CA7F00DD1C09 /* API */,
-			);
-			name = MarvelAppFramework;
-			sourceTree = "<group>";
-		};
 		9D325FCB222B06AD00DC3270 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +256,7 @@
 				9D325FCC222B06B400DC3270 /* HeroList */,
 			);
 			name = Modules;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9D325FCC222B06B400DC3270 /* HeroList */ = {
@@ -290,15 +290,7 @@
 				9DDCBEDE2225D72400DD1C09 /* CardCell.xib */,
 			);
 			name = Cells;
-			sourceTree = "<group>";
-		};
-		9D325FD3222B070500DC3270 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				9D325FD4222B071000DC3270 /* SectionHeaders */,
-				9D325FD2222B06F200DC3270 /* Cells */,
-			);
-			name = UI;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		9D325FD4222B071000DC3270 /* SectionHeaders */ = {
@@ -307,6 +299,7 @@
 				9D47DEDD222AE0C80089F0AE /* HeroDetailSectionHeader.swift */,
 			);
 			name = SectionHeaders;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		9D325FD5222B074800DC3270 /* Mocks */ = {
@@ -343,6 +336,7 @@
 				9D325FE2222C179200DC3270 /* Images.xcassets */,
 			);
 			name = Resources;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9D325FE6222C1D6100DC3270 /* Services */ = {
@@ -351,6 +345,7 @@
 				9D325FE7222C1D7E00DC3270 /* FavoritesService.swift */,
 			);
 			name = Services;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9DDCBE832225B3EC00DD1C09 = {
@@ -358,7 +353,6 @@
 			children = (
 				AFEAB51D281722D200A1679B /* MarvelApp.playground */,
 				9DDCBE8E2225B3ED00DD1C09 /* MarvelApp */,
-				972564EC6BC47FA79337DC84 /* MarvelAppFramework */,
 				9DDCBEAE2225B3EF00DD1C09 /* MarvelAppUITests */,
 				AF9E54792817260700759DC3 /* MarvelAppTests */,
 				9DDCBE8D2225B3ED00DD1C09 /* Products */,
@@ -381,6 +375,13 @@
 			isa = PBXGroup;
 			children = (
 				9DDCBE8F2225B3ED00DD1C09 /* AppDelegate.swift */,
+				9DDCBEC12225C80800DD1C09 /* AppEnvironment.swift */,
+				9DDCBEC32225C80D00DD1C09 /* Environment.swift */,
+				9D325FE1222C175600DC3270 /* Resources */,
+				9D325FCB222B06AD00DC3270 /* Modules */,
+				9DDCBED32225CB9000DD1C09 /* Helpers */,
+				9D325FE6222C1D6100DC3270 /* Services */,
+				9DDCBEC72225CA7F00DD1C09 /* API */,
 				9DDCBEBF2225B59700DD1C09 /* UI */,
 				9DDCBEC02225B5A800DD1C09 /* Resources */,
 			);
@@ -399,6 +400,9 @@
 		9DDCBEBF2225B59700DD1C09 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AF04B938281B2C8F002A9C02 /* ActionSheet */,
+				9D325FD4222B071000DC3270 /* SectionHeaders */,
+				9D325FD2222B06F200DC3270 /* Cells */,
 				9DDCBE982225B3EE00DD1C09 /* LaunchScreen.storyboard */,
 			);
 			path = UI;
@@ -425,6 +429,7 @@
 				9DDCBEC82225CA8800DD1C09 /* Models */,
 			);
 			name = API;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9DDCBEC82225CA8800DD1C09 /* Models */ = {
@@ -442,16 +447,32 @@
 		9DDCBED32225CB9000DD1C09 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				9DDCBED92225D6EE00DD1C09 /* BundleExtensions.swift */,
 				9DDCBED82225D6EE00DD1C09 /* Nibloadable.swift */,
 				9DB09387222D82C7003EFF7D /* Tagged.swift */,
 				9D325FD7222B0AB100DC3270 /* Dequeuer.swift */,
-				9D47DEA22228877A0089F0AE /* UIViewExtensions.swift */,
+				9D47DEA22228877A0089F0AE /* UIView+Extensions.swift */,
 				9DDCBEDA2225D6EF00DD1C09 /* StoryboardInstantiable.swift */,
 				9DDCBED42225CB9A00DD1C09 /* MD5.swift */,
-				9DDCBEE02225F33800DD1C09 /* UIImageViewExtensions.swift */,
+				9DDCBEE02225F33800DD1C09 /* UIImageView+Extensions.swift */,
+				AF04B947281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift */,
 			);
 			name = Helpers;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		AF04B938281B2C8F002A9C02 /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				AF04B939281B2C9B002A9C02 /* ActionSheet.swift */,
+				AF04B93C281B2D93002A9C02 /* ActionSheetAnimator.swift */,
+				AF04B93B281B2D93002A9C02 /* ActionSheetConfiguration.swift */,
+				AF04B93E281B2D93002A9C02 /* ActionSheetConstants.swift */,
+				AF04B940281B2D93002A9C02 /* ActionSheetPresenter.swift */,
+				AF04B93F281B2D93002A9C02 /* ActionSheetTransitionDelegate.swift */,
+				AF04B93D281B2D93002A9C02 /* DefaultActionView.swift */,
+			);
+			name = ActionSheet;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		AF9E54792817260700759DC3 /* MarvelAppTests */ = {
@@ -730,6 +751,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF04B948281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift in Sources */,
+				AF04B942281B2D93002A9C02 /* ActionSheetAnimator.swift in Sources */,
 				AF9E545B281725B300759DC3 /* PosterCell.swift in Sources */,
 				AF9E5457281725A400759DC3 /* HeroListInteractor.swift in Sources */,
 				AF9E5458281725A400759DC3 /* HeroListBuilder.swift in Sources */,
@@ -738,30 +761,35 @@
 				AF9E5473281725CE00759DC3 /* APIResponse.swift in Sources */,
 				AF9E5470281725CE00759DC3 /* APICollection.swift in Sources */,
 				AF9E5460281725BA00759DC3 /* StoryboardInstantiable.swift in Sources */,
-				AF9E5464281725BA00759DC3 /* BundleExtensions.swift in Sources */,
 				AF9E546A281725C900759DC3 /* Result.swift in Sources */,
 				AF9E546D281725C900759DC3 /* PageOffsetGenerator.swift in Sources */,
 				AF9E545A281725AE00759DC3 /* HeroDetailSectionHeader.swift in Sources */,
 				AF9E546C281725C900759DC3 /* API.swift in Sources */,
-				AF9E5467281725BA00759DC3 /* UIImageViewExtensions.swift in Sources */,
+				AF9E5467281725BA00759DC3 /* UIImageView+Extensions.swift in Sources */,
 				AF9E5465281725BA00759DC3 /* MD5.swift in Sources */,
 				AF9E544E2817257D00759DC3 /* Environment.swift in Sources */,
+				AF04B946281B2D93002A9C02 /* ActionSheetPresenter.swift in Sources */,
 				AF9E5466281725BA00759DC3 /* Dequeuer.swift in Sources */,
 				AF9E54502817259800759DC3 /* HeroDetailInteractor.swift in Sources */,
 				AF9E545F281725BA00759DC3 /* Tagged.swift in Sources */,
 				AF9E546F281725CE00759DC3 /* MarvelHero.swift in Sources */,
+				AF04B943281B2D93002A9C02 /* DefaultActionView.swift in Sources */,
 				AF9E5456281725A400759DC3 /* HeroListViewController.swift in Sources */,
-				AF9E5462281725BA00759DC3 /* UIViewExtensions.swift in Sources */,
+				AF9E5462281725BA00759DC3 /* UIView+Extensions.swift in Sources */,
+				AF04B93A281B2C9B002A9C02 /* ActionSheet.swift in Sources */,
 				AF9E5468281725C300759DC3 /* FavoritesService.swift in Sources */,
 				AF9E54512817259800759DC3 /* HeroDetailViewController.swift in Sources */,
 				AF9E54522817259800759DC3 /* HeroDetailBuilder.swift in Sources */,
 				AF9E5469281725C900759DC3 /* HeroListRequest.swift in Sources */,
 				AF9E546E281725C900759DC3 /* RequestType.swift in Sources */,
+				AF04B941281B2D93002A9C02 /* ActionSheetConfiguration.swift in Sources */,
 				AF9E5472281725CE00759DC3 /* HeroProduct.swift in Sources */,
 				AF9E5463281725BA00759DC3 /* Nibloadable.swift in Sources */,
 				AF9E546B281725C900759DC3 /* HeroProductsRequest.swift in Sources */,
+				AF04B945281B2D93002A9C02 /* ActionSheetTransitionDelegate.swift in Sources */,
 				AF9E544D2817257A00759DC3 /* AppEnvironment.swift in Sources */,
 				AF9E545D281725B300759DC3 /* CardCell.swift in Sources */,
+				AF04B944281B2D93002A9C02 /* ActionSheetConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

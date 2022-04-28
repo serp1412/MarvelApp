@@ -4,7 +4,10 @@
 target 'MarvelApp' do
   use_frameworks!
   pod 'LazyTransitions'
-
+  pod 'SnapKit', '5.0.1'
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
+  
   target 'MarvelAppTests' do
     inherit! :search_paths
     pod 'SnapshotTesting', '~> 1.9.0'

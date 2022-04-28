@@ -14,7 +14,7 @@ extension StoryboardInstantiable {
 
     private static var storyboard: UIStoryboard {
         return UIStoryboard(name: Self.storyboardName,
-                            bundle: Bundle.framework)
+                            bundle: .main)
     }
 
     /// Instantiates view controller with the specified identifier.

@@ -20,9 +20,9 @@ public extension NibLoadable where Self: UIView {
     }
 
     static func instantiate() -> Self {
-        let views = Bundle.framework.loadNibNamed(nibName,
-                                                  owner: nil,
-                                                  options: nil) ?? []
+        let views = Bundle.main.loadNibNamed(nibName,
+                                        owner: nil,
+                                        options: nil) ?? []
 
         return views.lazy.compactMap { $0 as? UIView }.first! as! Self
     }
@@ -30,12 +30,12 @@ public extension NibLoadable where Self: UIView {
 
 extension UICollectionView {
     func register<T: NibLoadable>(_ type: T.Type) {
-        let nib = UINib(nibName: type.nibName, bundle: Bundle.framework)
+        let nib = UINib(nibName: type.nibName, bundle: .main)
         register(nib, forCellWithReuseIdentifier: type.identifier)
     }
 
     func register<T: NibLoadable>(_ type: T.Type, forSupplementaryViewOfKind kind: String) {
-        let nib = UINib(nibName: type.nibName, bundle: Bundle.framework)
+        let nib = UINib(nibName: type.nibName, bundle: .main)
         register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: type.identifier)
     }
 }

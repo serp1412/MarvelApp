@@ -48,7 +48,27 @@ let navVC = HeroListBuilder.build()
 
 navVC.view.frame = CGRect.init(x: 0, y: 0, width: 375, height: 667)
 
+let actionSheet = ActionSheet.init(configuration: .init(header: .title("Heroes"), maxHeight: 500))
+let firstAction = DefaultActionView(title: "First Action",
+                                      icon: .icon(.init(named: "star")!, size: 24),
+                                      rightTitle: "Disclaimer",
+                                      sheetToDismiss: actionSheet,
+                                      onTap: { })
+actionSheet.setActions([
+    firstAction,
+    DefaultActionView(title: "Second Action",
+                        icon: .empty,
+                        sheetToDismiss: actionSheet,
+                        onTap: { }),
+    DefaultActionView(title: "Third Action",
+                        icon: .empty,
+                        sheetToDismiss: actionSheet,
+                        onTap: { })
+])
+
 PlaygroundPage.current.liveView = navVC.view
+
+actionSheet.present(in: navVC)
 
 //let api = API()
 //api.getHeroes { result in
