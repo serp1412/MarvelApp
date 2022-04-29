@@ -190,6 +190,9 @@ public class ActionSheet: UIViewController {
         let closeButton = UIButton(type: .custom)
         closeButton.setImage(ActionSheetConstants.closeIcon,
                              for: .normal)
+        closeButton.snp.makeConstraints { make in
+            make.width.height.equalTo(ActionSheetConstants.iconSize)
+        }
 
         closeButton.rx.tap.subscribe { [weak self] _ in
             self?.dismissSheet()

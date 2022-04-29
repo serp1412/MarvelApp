@@ -48,7 +48,15 @@ let navVC = HeroListBuilder.build()
 
 navVC.view.frame = CGRect.init(x: 0, y: 0, width: 375, height: 667)
 
-let actionSheet = ActionSheet.init(configuration: .init(header: .title("Heroes"), maxHeight: 500))
+let button = UIButton(type: .system)
+button.setTitle("Awesome Action!", for: .normal)
+let footer = UIView()
+footer.addSubview(button)
+button.snp.makeConstraints { make in
+    make.edges.equalToSuperview().inset(20)
+}
+
+let actionSheet = ActionSheet.init(configuration: .init(header: .title("Heroes"), footer: footer, maxHeight: 500))
 let firstAction = DefaultActionView(title: "First Action",
                                       icon: .icon(.init(named: "star")!, size: 24),
                                       rightTitle: "Disclaimer",
