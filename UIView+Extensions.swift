@@ -1,11 +1,12 @@
 import UIKit
+import SnapKit
 
 extension UIView {
     func addToCenter(_ subview: UIView) {
         addSubview(subview)
-        subview.translatesAutoresizingMaskIntoConstraints = false
-        subview.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        subview.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        subview.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     func roundCorners(corners: CACornerMask, radius: CGFloat) {
@@ -22,9 +23,13 @@ extension UIView {
         let spacer = UIView()
         switch side {
         case .height(let height):
-            spacer.heightAnchor.constraint(equalToConstant: height).isActive = true
+            spacer.snp.makeConstraints { make in
+                make.height.equalTo(height)
+            }
         case .width(let width):
-            spacer.widthAnchor.constraint(equalToConstant: width).isActive = true
+            spacer.snp.makeConstraints { make in
+                make.width.equalTo(width)
+            }
         }
 
         spacer.backgroundColor = .clear

@@ -1,7 +1,19 @@
 /*:
  # Welcome to MarvelApp!
+ 
+ - NOTE: To view this in proper Markup, make sure to go to `Editor -> Show Rendered Markup`
+ 
+ ## What has been added recently?
+ * App switched to modern playgrounds. Removed app-inside-framework approach.
+ * Added custom action sheet for custom transitions and customizability options.
+ - NOTE: Check its snapshot tests for customization options
+ * Added snapshot tests for app screens and action sheet
+    * Make sure to run the snapshots on iPhone 12, iOS 15.4.
+ * Integrated [LazyTransitions](https://github.com/serp1412/LazyTransitions/tree/master/LazyTransitions) for lazy pop gestures on details page
+ * Used SnapKit for the new UI
+ * Updated this playground with new examples
 
- ## What has been done?
+ ## What has been initially done in 2019?
  * App was added into playgrounds for quick iterations especially in the beginning. You'll notice that I only made the project to run on the simulator on commit #6 4c1ea15
  - NOTE: If you go through git history you'll notice what I prototyped in the playgrounds on each stage (API, UI, various ideas etc.)
  * To make the point above work, I had to move the whole app into a framework. The idea is stolen from `Kickstarter` iOS app
@@ -16,25 +28,12 @@
  * Had to come up with a new `FuncCheck` type in order to control the stub of a closure when it's called multiple times in a row - `ClosureStubFuncCheck`. This allowed me to provide a different stub depending on the passed parameters. Specifically this was useful in `HeroDetailInteractor` when on `viewDidLoad` it triggers 4 requests at once and I wanted to pass different values in the completion block depending on the request. Check `HeroDetailInteractorTests` to see what I mean.
  * A bit of runtime magic to make sure images are loaded properly when inside reusable cells
 
- ## What could have been done?
- - NOTE: A lot of these things I simply didn't have time to do due to family circumstances
- * Acceptance Criteria: Custom transition - just didn't have time to do it. But I have an entire open source library about custom transitions, so you can [check that out](https://github.com/serp1412/LazyTransitions)
- * Snapshot tests! but there was a requirement not to use anything third party, so I skipped that
- * Didn't have time to write UI tests
- * I would have probably extracted the API bits in both controllers into a separate private service. For example, I really don't like the `Bool`s that I introduced in `HeroListInteractor` and would have looked for a better solution.
- * Would have figured out how to separate `CardCell` into subclasses that would come out of the same nib file. For some reason took me too long to make it work and I gave up
- * Write much more documentation
- * Write tests for `FavoritesService` by moving the persistence logic into a separate persistor type.
- * Write integration tests with Marvel API
- * Add some kind of security to the API credentials :D
- * Would have handled API errors and have some kind of UI for failed states
- * Match the physical folder structure of the project with the Xcode structure
- * Make the cell for Stories not show any image placeholder
- * Cleanup the code a bit more
-
  That's about it! I hope you enjoy looking through this code as I enjoyed writing it :)
 
- - NOTE: You can actually play around with the entire app, by building the project and pressing the `Play` button below. Make sure to open the `LiveView` of this playground in the Assistent Editor
+You can actually play around with the entire app, by building the project and pressing the `Play` button below. Make sure to open the `LiveView` of this playground in the Assistent Editor.
+    If playgrounds are acting up, just re-run them ;)
+ 
+ - NOTE: On a M1 machine for playgrounds to work, make sure you're **not** running it with Rosetta
 
  */
 
@@ -48,6 +47,42 @@ let navVC = HeroListBuilder.build()
 
 navVC.view.frame = CGRect.init(x: 0, y: 0, width: 375, height: 667)
 
+PlaygroundPage.current.liveView = navVC.view
+/*:
+ ## API usage examples
+*/
+
+
+//let api = API()
+//api.getHeroes { result in
+//    switch result {
+//    case .success(let heroes):
+//        heroes.results.first!.id
+//        api.getHeroProducts(kind: .series, heroId: heroes.results.first!.id,
+//                            limit: 20, completion: { (result) in
+//            print(result)
+//        })
+//    case .failure: print("Failed")
+//    }
+//}
+//
+//AppEnvironment.current.api.getHeroes { (result) in
+//    switch result {
+//    case .success(let heroes):
+//    DispatchQueue.main.async {
+//        let cell = CardCell.instantiate()
+//        cell.configure(for: heroes.results.first!, infoButtonTapped: {})
+//        cell.frame = CGRect.init(x: 0, y: 0, width: 375, height: 270)
+//
+//        PlaygroundPage.current.liveView = cell
+//    }
+//    case .failure: print("Failed")
+//    }
+//}
+
+/*:
+ ## ActionSheet usage example
+*/
 let button = UIButton(type: .system)
 button.setTitle("Awesome Action!", for: .normal)
 let footer = UIView()
@@ -59,64 +94,20 @@ button.snp.makeConstraints { make in
 let actionSheet = ActionSheet.init(configuration: .init(header: .title("Heroes"), footer: footer, maxHeight: 500))
 let firstAction = DefaultActionView(title: "First Action",
                                     icon: .icon(Images.star, size: 24),
-                                      rightTitle: "Disclaimer",
-                                      sheetToDismiss: actionSheet,
-                                      onTap: { })
+                                    rightTitle: "Disclaimer",
+                                    sheetToDismiss: actionSheet,
+                                    onTap: { })
 actionSheet.setActions([
     firstAction,
     DefaultActionView(title: "Second Action",
-                        icon: .empty,
-                        sheetToDismiss: actionSheet,
-                        onTap: { }),
+                      icon: .empty,
+                      sheetToDismiss: actionSheet,
+                      onTap: { }),
     DefaultActionView(title: "Third Action",
-                        icon: .empty,
-                        sheetToDismiss: actionSheet,
-                        onTap: { })
+                      icon: .empty,
+                      sheetToDismiss: actionSheet,
+                      onTap: { })
 ])
 
-PlaygroundPage.current.liveView = navVC.view
+actionSheet.present(in: navVC)
 
-//actionSheet.present(in: navVC)
-
-//let api = API()
-//api.getHeroes { result in
-//    switch result {
-//    case .success(let heroes):
-//        heroes.results.first!.id
-//        api.getSeries(heroId: heroes.results.first!.id, completion: { (result) in
-//            print(result)
-//        })
-//    case .failure: print("Failed")
-//    }
-//}
-//
-//api.getSeries(heroId: 1011194, completion: { (result) in
-//    switch result {
-//    case .success(let comics):
-//        print(comics.count)
-//        print(comics)
-//    case .failure: break
-//    }
-//})
-
-//AppEnvironment.current.api.getHeroes { (result) in
-//    switch result {
-//    case .success(let heroes):
-//    DispatchQueue.main.async {
-//        let cell = CardCell.instantiate()
-//        cell.configure(for: heroes.results.first!)
-//        cell.frame = CGRect.init(x: 0, y: 0, width: 375, height: 270)
-//
-//        PlaygroundPage.current.liveView = cell
-//    }
-//    case .failure: print("Failed")
-//    }
-//}
-
-let sPath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-
-let plistPath = sPath.appendingPathComponent("newPlist.plist")
-
-([1, 2, 3] as NSArray).write(to: plistPath, atomically: true)
-
-FileManager.default.fileExists(atPath: sPath.relativePath)
