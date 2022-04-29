@@ -4,11 +4,39 @@ import SnapshotTesting
 import XCTest
 
 class ActionSheetTests: XCTestCase {
+    enum Constants {
+        static let defaultActions: [DefaultActionView] = [
+                .init(title: "First Action",
+                      icon: .icon(Images.star, size: 24),
+                      rightTitle: "Disclaimer"),
+                .init(title: "Second Action",
+                      icon: .empty),
+                .init(title: "Last Action",
+                      icon: .empty),
+        ]
+
+        static let customHeader: UIView = {
+            let icon = UIImageView()
+            icon.image = Images.star
+            icon.snp.makeConstraints { make in
+                make.width.height.equalTo(30)
+            }
+
+            let label = UILabel()
+            label.text = "I'm Custom"
+
+            let customTitle = UIStackView(arrangedSubviews: [icon, .spacer(.width(10)), label])
+
+            return customTitle
+        }()
+    }
+
+    
     let container = UIViewController()
 
     @discardableResult
     func showSheet(
-        actions: [DefaultActionView] = ActionSheetTestsConstants.defaultActions,
+        actions: [DefaultActionView] = Constants.defaultActions,
         maxHeight: CGFloat = 500,
         header: ActionSheetConfiguration.Header = .title("Header Title"),
         footer: UIView? = nil
@@ -45,7 +73,7 @@ class ActionSheetTests: XCTestCase {
     func testCustomTitleActionSheet() {
         // when
 
-        let sheet = showSheet(header: .view(ActionSheetTestsConstants.customHeader))
+        let sheet = showSheet(header: .view(Constants.customHeader))
 
         // then
         let result = verifySnapshot(matching: sheet,
@@ -85,31 +113,4 @@ class ActionSheetTests: XCTestCase {
                                     testName: name)
         XCTAssertNil(result)
     }
-}
-
-enum ActionSheetTestsConstants {
-    static let defaultActions: [DefaultActionView] = [
-            .init(title: "First Action",
-                  icon: .icon(.init(imageLiteralResourceName: "star"), size: 24),
-                  rightTitle: "Disclaimer"),
-            .init(title: "Second Action",
-                  icon: .empty),
-            .init(title: "Last Action",
-                  icon: .empty),
-    ]
-
-    static let customHeader: UIView = {
-        let icon = UIImageView()
-        icon.image = .init(imageLiteralResourceName: "star")
-        icon.snp.makeConstraints { make in
-            make.width.height.equalTo(30)
-        }
-
-        let label = UILabel()
-        label.text = "I'm Custom"
-
-        let customTitle = UIStackView(arrangedSubviews: [icon, .spacer(.width(10)), label])
-
-        return customTitle
-    }()
 }

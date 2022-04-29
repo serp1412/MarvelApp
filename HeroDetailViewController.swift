@@ -1,8 +1,19 @@
 import UIKit
 import LazyTransitions
+import SnapKit
 
 class HeroDetailViewController: UIViewController, StoryboardInstantiable {
-    static var storyboardName: String = "HeroDetail"
+    enum Constants {
+        static let storyboardName = "HeroDetail"
+        static let iconSize: CGFloat = 24
+        
+        // collection view constants
+        static let minimumLineSpacing: CGFloat = 10
+        static let minimumInteritemSpacing: CGFloat = 10
+        static let sectionHeaderHeight: CGFloat = 50
+    }
+    
+    static let storyboardName = Constants.storyboardName
     var interactor: HeroDetailOutput!
     @IBOutlet private weak var collectionView: UICollectionView!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -18,11 +29,15 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
     }
 
     private func setupBarButtonItem() {
-        let image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
-        navigationItem.rightBarButtonItem = .init(image: image,
-                                                  style: .plain,
-                                                  target: self,
-                                                  action: #selector(favoriteButtonTapped))
+        let image = Images.star.withRenderingMode(.alwaysTemplate)
+        let button = UIButton(type: .custom)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+        button.snp.makeConstraints { make in
+            make.width.height.equalTo(Constants.iconSize)
+        }
+
+        navigationItem.rightBarButtonItem = .init(customView: button)
     }
 
     private func setupCollectionView() {
@@ -31,8 +46,8 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
         collectionView.delegate = self
         collectionView.dataSource = self
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = Constants.minimumLineSpacing
+        layout.minimumInteritemSpacing = Constants.minimumInteritemSpacing
         collectionView.collectionViewLayout = layout
     }
 
@@ -43,11 +58,11 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
 
 extension HeroDetailViewController: HeroDetailInput {
     func favorite() {
-        navigationItem.rightBarButtonItem?.tintColor = .red
+        navigationItem.rightBarButtonItem?.customView?.tintColor = .orange
     }
 
     func unfavorite() {
-        navigationItem.rightBarButtonItem?.tintColor = .gray
+        navigationItem.rightBarButtonItem?.customView?.tintColor = .gray
     }
 
     func reloadData() {
@@ -108,7 +123,7 @@ extension HeroDetailViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         return section > 0 ?
-            .init(width: collectionView.frame.width, height: 50):
+            .init(width: collectionView.frame.width, height: Constants.sectionHeaderHeight):
             .zero
     }
 
@@ -117,8 +132,8 @@ extension HeroDetailViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         return indexPath.section == 0 ?
-            .init(width: collectionView.frame.width, height: 300):
-            .init(width: collectionView.frame.width, height: 272)
+            .init(width: collectionView.frame.width, height: PosterCell.preferredHeight):
+            .init(width: collectionView.frame.width, height: CardCell.preferredHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView,

@@ -58,7 +58,7 @@ button.snp.makeConstraints { make in
 
 let actionSheet = ActionSheet.init(configuration: .init(header: .title("Heroes"), footer: footer, maxHeight: 500))
 let firstAction = DefaultActionView(title: "First Action",
-                                      icon: .icon(.init(named: "star")!, size: 24),
+                                    icon: .icon(Images.star, size: 24),
                                       rightTitle: "Disclaimer",
                                       sheetToDismiss: actionSheet,
                                       onTap: { })

@@ -1,6 +1,7 @@
 import UIKit
 
 class PosterCell: UICollectionViewCell {
+    static let preferredHeight: CGFloat = 300
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
 

@@ -188,7 +188,7 @@ public class ActionSheet: UIViewController {
         }
 
         let closeButton = UIButton(type: .custom)
-        closeButton.setImage(ActionSheetConstants.closeIcon,
+        closeButton.setImage(Images.close,
                              for: .normal)
         closeButton.snp.makeConstraints { make in
             make.width.height.equalTo(ActionSheetConstants.iconSize)

@@ -1,6 +1,7 @@
 import UIKit
 
 class CardCell: UICollectionViewCell {
+    static let preferredHeight: CGFloat = 272
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!

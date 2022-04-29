@@ -8,7 +8,6 @@ public enum ActionSheetConstants {
     static let smallSpacer: CGFloat = 10
     static let separatorHeight: CGFloat = 1
     static let iconSize: CGFloat = 24
-    static let closeIcon: UIImage = #imageLiteral(resourceName: "close")
     static let animationDuration: TimeInterval = 0.2
     
     // text constants

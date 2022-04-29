@@ -1,7 +1,17 @@
 import UIKit
 
 class HeroListViewController: UIViewController, StoryboardInstantiable {
-    static var storyboardName: String = "HeroList"
+    enum Constants {
+        static let navigationTitle = "Heroes"
+        static let storyboardName = "HeroList"
+        
+        // collection view constants
+        static let minimumLineSpacing: CGFloat = 10
+        static let minimumInteritemSpacing: CGFloat = 10
+        static let footerHeight: CGFloat = 60
+        static let footerIdentifier = "HeroListFooterView"
+    }
+    static let storyboardName = Constants.storyboardName
     @IBOutlet private weak var collectionView: UICollectionView!
     private var loadingIndicator: UIActivityIndicatorView?
 
@@ -23,7 +33,7 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
     }
 
     private func setupNavigationItem() {
-        navigationItem.title = "Heroes"
+        navigationItem.title = Constants.navigationTitle
         navigationItem.searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController?.obscuresBackgroundDuringPresentation = true
         navigationItem.searchController?.searchBar.delegate = self
@@ -32,8 +42,8 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
 
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = Constants.minimumLineSpacing
+        layout.minimumInteritemSpacing = Constants.minimumInteritemSpacing
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -81,7 +91,7 @@ extension HeroListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: collectionView.frame.width, height: 272)
+        return CGSize(width: collectionView.frame.width, height: CardCell.preferredHeight)
     }
 }
 
@@ -104,10 +114,11 @@ extension HeroListViewController: UICollectionViewDataSource {
             infoIcon.tintColor = .gray
             infoIcon.isUserInteractionEnabled = false
 
-            let actionSheet = ActionSheet.init(configuration: .init(header: .title(hero.name), maxHeight: 500))
+            let actionSheet = ActionSheet.init(configuration: .init(header: .title(hero.name),
+                                                                    maxHeight: 500))
             actionSheet.setActions([
                 DefaultActionView(title: firstActionTitle,
-                                  icon: .icon(.init(imageLiteralResourceName: "star"),
+                                  icon: .icon(Images.star,
                                               size: ActionSheetConstants.iconSize,
                                               color: isFavorite ? .orange : .gray),
                                   sheetToDismiss: actionSheet,
@@ -141,7 +152,7 @@ extension HeroListViewController: UICollectionViewDataSource {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
         return interactor.shouldShowFooter ?
-        CGSize(width: collectionView.frame.width, height: 60):
+        CGSize(width: collectionView.frame.width, height: Constants.footerHeight):
             .zero
     }
 
@@ -151,7 +162,7 @@ extension HeroListViewController: UICollectionViewDataSource {
         guard kind == UICollectionView.elementKindSectionFooter else { return UICollectionReusableView() }
 
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                               withReuseIdentifier: "HeroListFooterView",
+                                                               withReuseIdentifier: Constants.footerIdentifier,
                                                                for: indexPath)
     }
 }

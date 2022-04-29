@@ -25,6 +25,7 @@
 		AF04B948281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B947281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift */; };
 		AF04B94A281B461D002A9C02 /* ActionSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B949281B461D002A9C02 /* ActionSheetTests.swift */; };
 		AF04B94C281C143A002A9C02 /* Snapshotting+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B94B281C143A002A9C02 /* Snapshotting+Extensions.swift */; };
+		AF04B94E281C2528002A9C02 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04B94D281C2528002A9C02 /* Images.swift */; };
 		AF9E544D2817257A00759DC3 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEC12225C80800DD1C09 /* AppEnvironment.swift */; };
 		AF9E544E2817257D00759DC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDCBEC32225C80D00DD1C09 /* Environment.swift */; };
 		AF9E544F2817259800759DC3 /* HeroDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D47DED1222AC9FD0089F0AE /* HeroDetail.storyboard */; };
@@ -171,6 +172,7 @@
 		AF04B947281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewControllerTransitionCoordinator+Extensions.swift"; sourceTree = "<group>"; };
 		AF04B949281B461D002A9C02 /* ActionSheetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetTests.swift; sourceTree = "<group>"; };
 		AF04B94B281C143A002A9C02 /* Snapshotting+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Snapshotting+Extensions.swift"; sourceTree = "<group>"; };
+		AF04B94D281C2528002A9C02 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		AF9E54782817260700759DC3 /* MarvelAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEAB51D281722D200A1679B /* MarvelApp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarvelApp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BAE7549EBD199889EFF3A3C6 /* Pods_MarvelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -429,6 +431,7 @@
 				9DDCBED42225CB9A00DD1C09 /* MD5.swift */,
 				9DDCBEE02225F33800DD1C09 /* UIImageView+Extensions.swift */,
 				AF04B947281B2EF2002A9C02 /* UIViewControllerTransitionCoordinator+Extensions.swift */,
+				AF04B94D281C2528002A9C02 /* Images.swift */,
 			);
 			name = Helpers;
 			path = ..;
@@ -691,6 +694,7 @@
 				AF9E546B281725C900759DC3 /* HeroProductsRequest.swift in Sources */,
 				AF04B945281B2D93002A9C02 /* ActionSheetTransitionDelegate.swift in Sources */,
 				AF9E544D2817257A00759DC3 /* AppEnvironment.swift in Sources */,
+				AF04B94E281C2528002A9C02 /* Images.swift in Sources */,
 				AF9E545D281725B300759DC3 /* CardCell.swift in Sources */,
 				AF04B944281B2D93002A9C02 /* ActionSheetConstants.swift in Sources */,
 			);
