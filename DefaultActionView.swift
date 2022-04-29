@@ -21,7 +21,7 @@ public class DefaultActionView: UIView {
     private weak var actionSheet: ActionSheet?
 
     public enum Icon {
-        case icon(_ icon: UIImage, size: CGFloat? = nil)
+        case icon(_ icon: UIImage, size: CGFloat? = nil, color: UIColor? = nil)
         case view(_ view: UIView)
         case empty
     }
@@ -102,13 +102,18 @@ public class DefaultActionView: UIView {
 public extension DefaultActionView.Icon {
     func toView() -> UIView {
         switch self {
-        case .icon(let icon, let size):
+        case .icon(let icon, let size, let color):
             let iconView = UIImageView()
             iconView.image = icon
             if let size = size {
                 iconView.snp.makeConstraints { make in
                     make.width.height.equalTo(size)
                 }
+            }
+            
+            if let color = color {
+                iconView.image = icon.withRenderingMode(.alwaysTemplate)
+                iconView.tintColor = color
             }
 
             return iconView

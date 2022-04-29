@@ -95,7 +95,38 @@ extension HeroListViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(CardCell.self, for: indexPath)
 
-        cell.configure(for: interactor.heroForIndex(indexPath.row))
+        let hero = interactor.heroForIndex(indexPath.row)
+        cell.configure(for: hero) {
+            let isFavorite = AppEnvironment.current.favorites.isFavorite(hero.id)
+            let firstActionTitle = (isFavorite ? "Remove from" : "Add to") + " Favorites"
+
+            let infoIcon = UIButton(type: .infoLight)
+            infoIcon.tintColor = .gray
+            infoIcon.isUserInteractionEnabled = false
+
+            let actionSheet = ActionSheet.init(configuration: .init(header: .title(hero.name), maxHeight: 500))
+            actionSheet.setActions([
+                DefaultActionView(title: firstActionTitle,
+                                  icon: .icon(.init(imageLiteralResourceName: "star"),
+                                              size: ActionSheetConstants.iconSize,
+                                              color: isFavorite ? .orange : .gray),
+                                  sheetToDismiss: actionSheet,
+                                  onTap: {
+                                      AppEnvironment.current.favorites.toggle(with: hero.id)
+                                  }),
+                DefaultActionView(title: "See Details",
+                                  icon: .view(infoIcon),
+                                  sheetToDismiss: actionSheet,
+                                  onTap: { [weak self] in
+                                      guard let self = self else { return }
+                                      let heroDetail = HeroDetailBuilder.build(with: hero)
+
+                                      self.navigationController?.pushViewController(heroDetail, animated: true)
+                                  }),
+            ])
+
+            actionSheet.present(in: self)
+        }
 
         return cell
     }
@@ -110,7 +141,7 @@ extension HeroListViewController: UICollectionViewDataSource {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
         return interactor.shouldShowFooter ?
-            CGSize(width: collectionView.frame.width, height: 60) :
+        CGSize(width: collectionView.frame.width, height: 60):
             .zero
     }
 

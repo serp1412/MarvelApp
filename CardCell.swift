@@ -6,6 +6,7 @@ class CardCell: UICollectionViewCell {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var favoriteButton: UIButton!
     private var hero: MarvelHero?
+    private var onInfoButtonTap: () -> Void = {}
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,18 +17,14 @@ class CardCell: UICollectionViewCell {
         imageView.backgroundColor = UIColor.lightGray
         isUserInteractionEnabled = true
         bringSubviewToFront(favoriteButton)
-        
-        let image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
-        favoriteButton.setImage(image, for: .normal)
-
     }
 
-    func configure(for hero: MarvelHero) {
+    func configure(for hero: MarvelHero, infoButtonTapped: @escaping () -> Void) {
         titleLabel.text = hero.name
         descriptionLabel.text = hero.description
         imageView.loadImage(at: hero.thumbnail.url(for: .portrait))
         self.hero = hero
-        configureFavorite()
+        self.onInfoButtonTap = infoButtonTapped
     }
 
     func configure(for product: HeroProduct) {
@@ -44,18 +41,13 @@ class CardCell: UICollectionViewCell {
         imageView.image = nil
     }
 
-    @IBAction private func toggleFavorite() {
-        hero.flatMap { AppEnvironment.current.favorites.toggle(with: $0.id) }
-        configureFavorite()
+    @IBAction private func infoButtonTapped() {
+        onInfoButtonTap()
     }
 
     private var isFavoriteHero: Bool {
         guard let hero = hero else { return false }
         return AppEnvironment.current.favorites.isFavorite(hero.id)
-    }
-
-    private func configureFavorite() {
-        favoriteButton.tintColor = isFavoriteHero ? .red : .gray
     }
 }
 

@@ -76,7 +76,7 @@ actionSheet.setActions([
 
 PlaygroundPage.current.liveView = navVC.view
 
-actionSheet.present(in: navVC)
+//actionSheet.present(in: navVC)
 
 //let api = API()
 //api.getHeroes { result in
