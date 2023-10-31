@@ -9,7 +9,7 @@
  - NOTE: Check its snapshot tests for customization options
  * Added snapshot tests for app screens and action sheet
     * Make sure to run the snapshots on iPhone 12, iOS 15.4.
- * Integrated [LazyTransitions](https://github.com/serp1412/LazyTransitions/tree/master/LazyTransitions) for lazy pop gestures on details page
+ * Integrated [LazyTransitions](https://github.com/serp1412/LazyTransitions/tree/master/LazyTransitions) for lazy pop gestures on details page (swipe right from the middle of the screen when you open one of the Marvel Heroes)
  * Used SnapKit for the new UI
  * Updated this playground with new examples
 
