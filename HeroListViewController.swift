@@ -83,7 +83,7 @@ extension HeroListViewController: UICollectionViewDelegateFlowLayout {
         let hero = interactor.heroForIndex(indexPath.row)
         let heroDetail = HeroDetailBuilder.build(with: hero)
         
-        navigationController?.present(heroDetail, animated: true)
+        navigationController?.pushViewController(heroDetail, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -130,7 +130,7 @@ extension HeroListViewController: UICollectionViewDataSource {
                                   onTap: { [weak self] in
                                       guard let self = self else { return }
                                       let heroDetail = HeroDetailBuilder.build(with: hero)
-
+                                      
                                       self.navigationController?.pushViewController(heroDetail, animated: true)
                                   }),
             ])
