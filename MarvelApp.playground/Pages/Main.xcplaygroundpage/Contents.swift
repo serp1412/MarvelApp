@@ -97,17 +97,35 @@ let firstAction = DefaultActionView(title: "First Action",
                                     rightTitle: "Disclaimer",
                                     sheetToDismiss: actionSheet,
                                     onTap: { })
-actionSheet.setActions([
-    firstAction,
-    DefaultActionView(title: "Second Action",
-                      icon: .empty,
-                      sheetToDismiss: actionSheet,
-                      onTap: { }),
-    DefaultActionView(title: "Third Action",
-                      icon: .empty,
-                      sheetToDismiss: actionSheet,
-                      onTap: { })
-])
+
+let tapAction = DefaultActionView(title: "Tap Me!!!", icon: .empty) {
+    actionSheet.setActions([
+        firstAction,
+        DefaultActionView(title: "Second Action",
+                          icon: .empty,
+                          sheetToDismiss: actionSheet,
+                          onTap: { }),
+        DefaultActionView(title: "Third Action",
+                          icon: .empty,
+                          sheetToDismiss: actionSheet,
+                          onTap: { })
+    ])
+}
+
+actionSheet.setActions([tapAction])
+//actionSheet.present(in: self)
+
+//actionSheet.setActions([
+//    firstAction,
+//    DefaultActionView(title: "Second Action",
+//                      icon: .empty,
+//                      sheetToDismiss: actionSheet,
+//                      onTap: { }),
+//    DefaultActionView(title: "Third Action",
+//                      icon: .empty,
+//                      sheetToDismiss: actionSheet,
+//                      onTap: { })
+//])
 
 actionSheet.present(in: navVC)
 

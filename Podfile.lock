@@ -1,5 +1,4 @@
 PODS:
-  - LazyTransitions (1.0.0)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
@@ -10,7 +9,6 @@ PODS:
   - SnapshotTesting (1.9.0)
 
 DEPENDENCIES:
-  - LazyTransitions
   - RxCocoa (= 6.2.0)
   - RxSwift (= 6.2.0)
   - SnapKit (= 5.0.1)
@@ -18,7 +16,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - LazyTransitions
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -26,13 +23,12 @@ SPEC REPOS:
     - SnapshotTesting
 
 SPEC CHECKSUMS:
-  LazyTransitions: 70f172ff876f2ff320283538aab3a02f3adec54b
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
 
-PODFILE CHECKSUM: 14229ad3bfbe37152c7556793b4b7e3026b19586
+PODFILE CHECKSUM: 662c6be1b60393bcc35fc99742a1bbbb9c832248
 
 COCOAPODS: 1.11.2

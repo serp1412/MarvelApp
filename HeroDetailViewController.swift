@@ -1,5 +1,4 @@
 import UIKit
-import LazyTransitions
 import SnapKit
 
 class HeroDetailViewController: UIViewController, StoryboardInstantiable {
@@ -22,7 +21,6 @@ class HeroDetailViewController: UIViewController, StoryboardInstantiable {
         super.viewDidLoad()
 
         navigationItem.largeTitleDisplayMode = .never
-        becomeLazy(for: .pop)
         setupCollectionView()
         setupBarButtonItem()
         interactor.viewDidLoad()

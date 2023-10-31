@@ -35,7 +35,6 @@ class HeroListViewController: UIViewController, StoryboardInstantiable {
     private func setupNavigationItem() {
         navigationItem.title = Constants.navigationTitle
         navigationItem.searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController?.obscuresBackgroundDuringPresentation = true
         navigationItem.searchController?.searchBar.delegate = self
         navigationItem.searchController?.delegate = self
     }
@@ -83,8 +82,8 @@ extension HeroListViewController: UICollectionViewDelegateFlowLayout {
                         didSelectItemAt indexPath: IndexPath) {
         let hero = interactor.heroForIndex(indexPath.row)
         let heroDetail = HeroDetailBuilder.build(with: hero)
-
-        navigationController?.pushViewController(heroDetail, animated: true)
+        
+        navigationController?.present(heroDetail, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView,
